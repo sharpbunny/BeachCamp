@@ -18,7 +18,7 @@
         tools:layout_editor_absoluteY="166dp"
         tools:layout_editor_absoluteX="85dp"
 
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="178dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -30,9 +30,9 @@
         android:inputType="textPassword"
         tools:layout_editor_absoluteY="252dp"
         tools:layout_editor_absoluteX="85dp"
+        android:layout_marginTop="26dp"
         android:layout_below="@+id/login"
-        android:layout_alignStart="@+id/login"
-        android:layout_marginTop="45dp" />
+        android:layout_alignStart="@+id/login" />
 
     <Button
         android:id="@+id/createBtn"

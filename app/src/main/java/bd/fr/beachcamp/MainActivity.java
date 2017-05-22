@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     TextView tentative;
     int compteur = 3;
 
+    final String EXTRA_LOGIN = "user_login";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
                  {
                      login.setText("");
                  }
-
              }
         });
 
@@ -50,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
                         password.getText().toString().equals("admin")) {
                     Toast.makeText(getApplicationContext(),
                             "Redirecting...",Toast.LENGTH_SHORT).show();
+                    Intent selection = new Intent(MainActivity.this, SelectionActivity.class);
+                    selection.putExtra(EXTRA_LOGIN, login.getText().toString());
+                    startActivity(selection);
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "login/Mdp incorrect",Toast.LENGTH_SHORT).show();

@@ -20,7 +20,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         annulerBtn = (Button)findViewById(R.id.annulerBtn);
 
-
         annulerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

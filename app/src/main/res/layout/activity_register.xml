@@ -16,16 +16,7 @@
         android:layout_marginTop="26dp"
         android:text="Creation profil" />
 
-    <EditText
-        android:id="@+id/pseudoBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Pseudo"
-        android:layout_below="@+id/creationProfil"
-        android:layout_alignStart="@+id/nomBox" />
+
 
     <EditText
         android:id="@+id/nomBox"
@@ -35,7 +26,7 @@
         android:inputType="textPersonName"
         android:text="Nom"
         android:layout_below="@+id/pseudoBox"
-        android:layout_alignStart="@+id/emailConfBox" />
+        android:layout_alignStart="@+id/prenomBox" />
 
     <EditText
         android:id="@+id/prenomBox"
@@ -45,7 +36,7 @@
         android:inputType="textPersonName"
         android:text="Prenom"
         android:layout_below="@+id/nomBox"
-        android:layout_alignStart="@+id/nomBox" />
+        android:layout_alignStart="@+id/emailBox" />
 
     <EditText
         android:id="@+id/emailBox"
@@ -55,7 +46,7 @@
         android:inputType="textPersonName"
         android:text="Email"
         android:layout_below="@+id/prenomBox"
-        android:layout_alignStart="@+id/prenomBox" />
+        android:layout_alignStart="@+id/emailConfBox" />
 
     <EditText
         android:id="@+id/emailConfBox"
@@ -71,10 +62,9 @@
         android:id="@+id/passwordTitle1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/emailConfBox"
+        android:text=" Mot de passe"
         android:layout_below="@+id/emailConfBox"
-        android:layout_marginTop="13dp"
-        android:text="Mot de passe" />
+        android:layout_alignStart="@+id/emailConfBox" />
 
     <EditText
         android:id="@+id/passwordBox"
@@ -89,10 +79,9 @@
         android:id="@+id/passwordTitle2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/passwordBox"
+        android:text=" Confirmation Mot de passe"
         android:layout_below="@+id/passwordBox"
-        android:layout_marginTop="10dp"
-        android:text="Confirmation Mot de passe" />
+        android:layout_alignStart="@+id/passwordBox" />
 
     <EditText
         android:id="@+id/passwordConfBox"
@@ -107,10 +96,10 @@
         android:id="@+id/validerBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Valider"
         android:layout_below="@+id/passwordConfBox"
-        android:layout_marginTop="21dp"
         android:layout_toStartOf="@+id/creationProfil"
-        android:text="Valider" />
+        android:layout_marginTop="23dp" />
 
     <Button
         android:id="@+id/annulerBtn"
@@ -120,5 +109,16 @@
         android:layout_alignBottom="@+id/validerBtn"
         android:layout_toEndOf="@+id/creationProfil"
         android:text="Annuler" />
+
+    <EditText
+        android:id="@+id/pseudoBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Pseudo"
+        android:layout_below="@+id/creationProfil"
+        android:layout_alignStart="@+id/nomBox"
+        android:layout_marginTop="16dp" />
 
 </RelativeLayout>
