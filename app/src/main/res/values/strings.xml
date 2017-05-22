@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BeachCamp</string>
+    // Token's permission for using MapBox.
+    &lt;string name=&quot;accessToken&quot;&gt;pk.eyJ1Ijoia2Fycm8iLCJhIjoiY2ozMDIzbnF2MDAwbDJxczFhOHpoOXFrNiJ9.uuwYhFQgooY47_dIaLCBsA&lt;/string&gt;
 </resources>

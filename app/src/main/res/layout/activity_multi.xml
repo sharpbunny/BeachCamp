@@ -1,9 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="bd.fr.beachcamp.MultiActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <com.mapbox.mapboxsdk.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="400dp"
+        android:layout_height="200dp"
+        app:mapbox_cameraTargetLat="16"
+        app:mapbox_cameraTargetLng="108"
+        app:mapbox_cameraZoom="11"/>
+
+    <Spinner
+        android:id="@+id/MultiSpinner"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="Test"
+        android:layout_centerInParent="true"
+
+        />
+
+
+    <TextView
+        android:id="@+id/MultiSelected"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="MultiName"
+        android:layout_below="@+id/MultiSpinner"
+        android:layout_centerInParent="true"/>
+    <TextView
+        android:id="@+id/MultiDate"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="22/05/2017"
+        android:layout_below="@+id/MultiSelected"
+        android:layout_centerInParent="true"
+
+        />
+    <TextView
+        android:id="@+id/NumberRegistration"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Numbers of registration : "
+        android:layout_below="@+id/MultiDate"
+        android:layout_centerInParent="true"
+        />
+    <Button
+        android:id="@+id/CreateMultiButton"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Create Multi"
+        android:layout_below="@id/NumberRegistration"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+
+
+        />
+
+
+
+</RelativeLayout>
