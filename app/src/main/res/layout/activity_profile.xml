@@ -6,6 +6,7 @@
     android:layout_height="fill_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
+    android:padding="5dp"
     android:weightSum="1">
 
 
@@ -187,11 +188,10 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/fermerBtn"
+    <com.github.mikephil.charting.charts.PieChart
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.07"
-        android:text="Fermer" />
+        android:id="@+id/chart"
+        android:layout_weight="0.86"></com.github.mikephil.charting.charts.PieChart>
 
 </LinearLayout>

@@ -42,21 +42,21 @@
         android:id="@+id/emailBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Email"
+        android:layout_alignStart="@+id/emailConfBox"
         android:layout_below="@+id/prenomBox"
-        android:layout_alignStart="@+id/emailConfBox" />
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text="Email" />
 
     <EditText
         android:id="@+id/emailConfBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Confirmation Email"
         android:layout_below="@+id/emailBox"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text="Confirmation Email" />
 
     <TextView
         android:id="@+id/passwordTitle1"
