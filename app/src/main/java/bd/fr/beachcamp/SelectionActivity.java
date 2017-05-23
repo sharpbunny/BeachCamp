@@ -10,8 +10,11 @@ import android.widget.TextView;
 
 public class SelectionActivity extends AppCompatActivity {
 
-    ImageButton profilBtn;
+    ImageButton profilBtn, multiBtn;
     Button decoBtn;
+    final String loginProfil = "";
+
+    TextView loginDisplay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +24,7 @@ public class SelectionActivity extends AppCompatActivity {
         final String EXTRA_LOGIN = "user_login";
 
         profilBtn = (ImageButton)findViewById(R.id.profilBtn);
+        multiBtn = (ImageButton)findViewById(R.id.multiBtn);
         decoBtn = (Button)findViewById(R.id.decoBtn);
 
 
@@ -28,14 +32,24 @@ public class SelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent profil = new Intent(SelectionActivity.this, ProfileActivity.class);
+                profil.putExtra(loginProfil, loginDisplay.getText().toString());
                 startActivity(profil);
+
+            }
+        });
+
+        multiBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent multi = new Intent(SelectionActivity.this, MultiActivity.class);
+                startActivity(multi);
 
             }
         });
 
         Intent intent = getIntent();
 
-        TextView loginDisplay = (TextView) findViewById(R.id.nomBox);
+        loginDisplay = (TextView) findViewById(R.id.nomBox);
 
         if (intent != null){
             loginDisplay.setText(intent.getStringExtra(EXTRA_LOGIN));

@@ -1,16 +1,12 @@
 package bd.fr.beachcamp;
-
 import android.content.Intent;
-
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
-
 import android.graphics.Color;
-
 import android.util.Log;
-
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,12 +14,9 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     Button b1, b2;
     EditText login, password;
-
     TextView tentative;
     int compteur = 3;
-
     final String EXTRA_LOGIN = "user_login";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,23 +42,38 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                password.setTransformationMethod(new PasswordTransformationMethod());
+
+                if (password != null)
+                {
+                    password.setText("");
+                }
+            }
+        });
+
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (login.getText().toString().equals("admin") &&
                         password.getText().toString().equals("admin")) {
                     Toast.makeText(getApplicationContext(),
-                            "Redirecting...", Toast.LENGTH_SHORT).show();
+
+                            "Connexion réussie",Toast.LENGTH_SHORT).show();
                     Intent selection = new Intent(MainActivity.this, SelectionActivity.class);
                     selection.putExtra(EXTRA_LOGIN, login.getText().toString());
                     startActivity(selection);
-                } else {
-                    Toast.makeText(getApplicationContext(), "login/Mdp incorrect", Toast.LENGTH_SHORT).show();
-
-                    tentative.setVisibility(View.VISIBLE);
-                    tentative.setBackgroundColor(Color.RED);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "login/mdp incorrect",Toast.LENGTH_SHORT).show();
+                    tentative.setVisibility(View.VISIBLE);                    
                     compteur--;
                     tentative.setText("Nombre essai restant " + Integer.toString(compteur));
+                    login.setText("Pseudo");
+                    password.setTransformationMethod(null);
+                    password.setText("Password");
 
                     if (compteur == 0) {
 
@@ -80,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent register = new Intent(MainActivity.this, RegisterActivity.class);
                 startActivity(register);
-
             }
         });
     }
