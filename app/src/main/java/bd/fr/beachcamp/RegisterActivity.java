@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -27,6 +28,16 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        if (passwordBox == passwordConfBox){
+            Toast.makeText(getApplicationContext(),
+                    "mdp OK",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(getApplicationContext(),
+                    "mdp NOK",Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 }

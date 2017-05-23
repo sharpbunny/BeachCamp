@@ -28,21 +28,28 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:25.3.1'
     testCompile 'junit:junit:4.12'
+    // add the Mapbox SDK dependency below
+    compile ('com.mapbox.mapboxsdk:mapbox-android-sdk:5.0.2@aar'){
+        transitive=true
+    }
 }
 
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.1.1'
-    // add the Mapbox SDK dependency below
-    compile ('com.mapbox.mapboxsdk:mapbox-android-sdk:5.0.2@aar'){
-        transitive=true
-    }
-}
+/*dependencies {
+
+    // https://mvnrepository.com/artifact/com.jakewharton.timber/timber
+    compile group: 'com.jakewharton.timber', name: 'timber', version: '4.1.2'
+    // https://mvnrepository.com/artifact/com.mapzen.android/lost
+    compile group: 'com.mapzen.android', name: 'lost', version: '2.1.2'
+
+    // https://mvnrepository.com/artifact/com.squareup.okio/okio
+    compile group: 'com.squareup.okio', name: 'okio', version: '1.12.0'
+
+}*/
+
 
 
 
