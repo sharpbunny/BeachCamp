@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="bd.fr.beachcamp.SelectionActivity">
+
+    <ImageButton
+        android:id="@+id/soloBtn"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginEnd="17dp"
+        app:srcCompat="@android:color/holo_green_dark"
+        android:layout_alignTop="@+id/MultiBtn"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:id="@+id/MultiBtn"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_above="@+id/decoBtn"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="22dp"
+        android:layout_marginStart="16dp"
+        app:srcCompat="@android:color/holo_blue_dark" />
+
+    <Button
+        android:id="@+id/decoBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:text="Deconnexion" />
+
+    <TextView
+        android:id="@+id/menuTitre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:text="Bienvenue" />
+
+    <ImageButton
+        android:id="@+id/profilBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/soloBtn"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="15dp"
+        app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <TextView
+        android:id="@+id/nomBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pseudo"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:layout_alignBottom="@+id/selectionTitre"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp" />
+
+    <TextView
+        android:id="@+id/selectionTitre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Veuillez selectionner votre mode :"
+        android:layout_above="@+id/soloBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="43dp" />
+
+    <TextView
+        android:id="@+id/multi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/MultiBtn"
+        android:layout_marginBottom="54dp"
+        android:layout_marginEnd="18dp"
+        android:layout_toStartOf="@+id/menuTitre"
+        android:text="Multi"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+    <TextView
+        android:id="@+id/solo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Solo"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:layout_alignBaseline="@+id/multi"
+        android:layout_alignBottom="@+id/multi"
+        android:layout_toEndOf="@+id/nomBox" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_above="@+id/nomBox"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

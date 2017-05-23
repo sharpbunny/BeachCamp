@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="bd.fr.beachcamp.RegisterActivity">
+
+
+    <TextView
+        android:id="@+id/creationProfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:text="Creation profil" />
+
+
+
+    <EditText
+        android:id="@+id/nomBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Nom"
+        android:layout_below="@+id/pseudoBox"
+        android:layout_alignStart="@+id/prenomBox" />
+
+    <EditText
+        android:id="@+id/prenomBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Prenom"
+        android:layout_below="@+id/nomBox"
+        android:layout_alignStart="@+id/emailBox" />
+
+    <EditText
+        android:id="@+id/emailBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Email"
+        android:layout_below="@+id/prenomBox"
+        android:layout_alignStart="@+id/emailConfBox" />
+
+    <EditText
+        android:id="@+id/emailConfBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Confirmation Email"
+        android:layout_below="@+id/emailBox"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/passwordTitle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Mot de passe"
+        android:layout_below="@+id/emailConfBox"
+        android:layout_alignStart="@+id/emailConfBox" />
+
+    <EditText
+        android:id="@+id/passwordBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:layout_below="@+id/passwordTitle1"
+        android:layout_alignStart="@+id/passwordTitle1" />
+
+    <TextView
+        android:id="@+id/passwordTitle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Confirmation Mot de passe"
+        android:layout_below="@+id/passwordBox"
+        android:layout_alignStart="@+id/passwordBox" />
+
+    <EditText
+        android:id="@+id/passwordConfBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:layout_below="@+id/passwordTitle2"
+        android:layout_alignStart="@+id/passwordTitle2" />
+
+    <Button
+        android:id="@+id/validerBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valider"
+        android:layout_below="@+id/passwordConfBox"
+        android:layout_toStartOf="@+id/creationProfil"
+        android:layout_marginTop="23dp" />
+
+    <Button
+        android:id="@+id/annulerBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/validerBtn"
+        android:layout_alignBottom="@+id/validerBtn"
+        android:layout_toEndOf="@+id/creationProfil"
+        android:text="Annuler" />
+
+    <EditText
+        android:id="@+id/pseudoBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Pseudo"
+        android:layout_below="@+id/creationProfil"
+        android:layout_alignStart="@+id/nomBox"
+        android:layout_marginTop="16dp" />
+
+</RelativeLayout>
