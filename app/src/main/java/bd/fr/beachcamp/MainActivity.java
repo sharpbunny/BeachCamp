@@ -1,10 +1,9 @@
 package bd.fr.beachcamp;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,24 +43,39 @@ public class MainActivity extends AppCompatActivity {
              }
         });
 
+        password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                password.setTransformationMethod(new PasswordTransformationMethod());
+
+                if (password != null)
+                {
+                    password.setText("");
+                }
+            }
+        });
+
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(login.getText().toString().equals("admin") &&
                         password.getText().toString().equals("admin")) {
                     Toast.makeText(getApplicationContext(),
-                            "Redirecting...",Toast.LENGTH_SHORT).show();
+                            "Connexion réussie",Toast.LENGTH_SHORT).show();
                     Intent selection = new Intent(MainActivity.this, SelectionActivity.class);
                     selection.putExtra(EXTRA_LOGIN, login.getText().toString());
                     startActivity(selection);
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), "login/Mdp incorrect",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "login/mdp incorrect",Toast.LENGTH_SHORT).show();
 
                     tentative.setVisibility(View.VISIBLE);
-                    tentative.setBackgroundColor(Color.RED);
+                    //tentative.setBackgroundColor(Color.RED);
                     compteur--;
                     tentative.setText("Nombre essai restant " + Integer.toString(compteur));
+                    login.setText("Pseudo");
+                    password.setTransformationMethod(null);
+                    password.setText("Password");
 
                     if (compteur == 0) {
 

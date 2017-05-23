@@ -12,6 +12,9 @@ public class SelectionActivity extends AppCompatActivity {
 
     ImageButton profilBtn;
     Button decoBtn;
+    final String loginProfil = "";
+
+    TextView loginDisplay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,7 @@ public class SelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent profil = new Intent(SelectionActivity.this, ProfileActivity.class);
+                profil.putExtra(loginProfil, loginDisplay.getText().toString());
                 startActivity(profil);
 
             }
@@ -35,7 +39,7 @@ public class SelectionActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        TextView loginDisplay = (TextView) findViewById(R.id.nomBox);
+        loginDisplay = (TextView) findViewById(R.id.nomBox);
 
         if (intent != null){
             loginDisplay.setText(intent.getStringExtra(EXTRA_LOGIN));
