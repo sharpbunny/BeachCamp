@@ -32,23 +32,16 @@ dependencies {
     compile ('com.mapbox.mapboxsdk:mapbox-android-sdk:5.0.2@aar'){
         transitive=true
     }
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
 }
 
 repositories {
     mavenCentral()
+
 }
 
-/*dependencies {
 
-    // https://mvnrepository.com/artifact/com.jakewharton.timber/timber
-    compile group: 'com.jakewharton.timber', name: 'timber', version: '4.1.2'
-    // https://mvnrepository.com/artifact/com.mapzen.android/lost
-    compile group: 'com.mapzen.android', name: 'lost', version: '2.1.2'
 
-    // https://mvnrepository.com/artifact/com.squareup.okio/okio
-    compile group: 'com.squareup.okio', name: 'okio', version: '1.12.0'
-
-}*/
 
 
 
