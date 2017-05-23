@@ -22,12 +22,4 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-repositories {
-    mavenCentral()
-}
 
-dependencies {
-    compile('com.mapbox.mapboxsdk:mapbox-android-sdk:5.0.2@aar') {
-        transitive=true
-    }
-}

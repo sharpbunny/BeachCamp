@@ -1,7 +1,7 @@
 package bd.fr.beachcamp;
 
 import android.support.v7.app.AppCompatActivity;
-package edmt.dev.androidmapbox;
+
 
 import android.os.Bundle;
 import android.view.View;
@@ -11,20 +11,40 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
+import com.mapbox.mapboxsdk.maps.MapView;
+import com.mapbox.mapboxsdk.maps.MapboxMap;
+import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
+import com.mapbox.mapboxsdk.Mapbox;
+
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class MultiActivity extends AppCompatActivity implements OnItemSelectedListener{
-    private MapView mapView;
 
+public class MultiActivity extends AppCompatActivity {
+
+    private MapView mapView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Mapbox.getInstance(this, "pk.eyJ1Ijoia2Fycm8iLCJhIjoiY2ozMDIzbnF2MDAwbDJxczFhOHpoOXFrNiJ9.uuwYhFQgooY47_dIaLCBsA");
-        setContentView(R.layout.activity_main);
+        Mapbox.getInstance(this, getString(R.string.AccessToken));
+
+        setContentView(R.layout.activity_multi);
+
+
         mapView = (MapView) findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
+
+        mapView.getMapAsync(new OnMapReadyCallback(){
+            @Override
+            public void onMapReady(MapboxMap mapboxMap){
+
+            }
+
+    });
+
+
     }
 
     @Override
@@ -68,7 +88,9 @@ public class MultiActivity extends AppCompatActivity implements OnItemSelectedLi
         super.onSaveInstanceState(outState);
         mapView.onSaveInstanceState(outState);
     }
+}
 
+/*
         // Description of the spinner element
 
         Spinner Multispinner = (Spinner) findViewById(R.id.MultiSpinner);
@@ -96,7 +118,7 @@ public class MultiActivity extends AppCompatActivity implements OnItemSelectedLi
         // This is how we link the dataAdapter to the spinner
 
         Multispinner.setAdapter(dataAdapter);
-    }
+
 
 
     public void  onItemSelected(AdapterView<?> parent, View view, int position, long id){
@@ -110,3 +132,4 @@ public class MultiActivity extends AppCompatActivity implements OnItemSelectedLi
 
     }
 }
+*/
