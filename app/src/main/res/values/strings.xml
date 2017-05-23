@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">BeachCamp</string>
+
+    <string name="AccessToken">sk.eyJ1Ijoia2Fycm8iLCJhIjoiY2ozMTZyYTA0MDAwMTMzbzZmNXB3emhvdCJ9.XVSyBCNQoIi8uuod51vLTg</string>
+
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
@@ -14,4 +17,5 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
 </resources>

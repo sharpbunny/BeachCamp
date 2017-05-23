@@ -29,5 +29,14 @@
             android:label="@string/title_activity_login" />
         <activity android:name=".SelectionActivity"></activity>
     </application>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    //to use mapbox
+    <uses-sdk android:minSdkVersion="15"
+        android:targetSdkVersion="integer"
+        android:maxSdkVersion="25" />
 
 </manifest>
