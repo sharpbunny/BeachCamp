@@ -24,9 +24,6 @@
         <activity android:name=".ProfileActivity" />
         <activity android:name=".MultiActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login" />
         <activity android:name=".SelectionActivity"></activity>
     </application>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />

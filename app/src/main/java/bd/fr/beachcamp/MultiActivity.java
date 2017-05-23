@@ -1,5 +1,6 @@
 package bd.fr.beachcamp;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
 
@@ -11,6 +12,12 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
+import com.mapbox.mapboxsdk.annotations.Icon;
+import com.mapbox.mapboxsdk.annotations.IconFactory;
+import com.mapbox.mapboxsdk.annotations.MarkerViewOptions;
+import com.mapbox.mapboxsdk.camera.CameraPosition;
+import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
+import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
@@ -25,6 +32,7 @@ public class MultiActivity extends AppCompatActivity {
 
     private MapView mapView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,13 +46,30 @@ public class MultiActivity extends AppCompatActivity {
 
         mapView.getMapAsync(new OnMapReadyCallback(){
             @Override
-            public void onMapReady(MapboxMap mapboxMap){
+            public void onMapReady(final MapboxMap mapboxMap){
+                //Add your marker here
+                mapboxMap.addMarker(new MarkerViewOptions()
+                    .position(new LatLng(43.564525, 3.845017))
+                    .title("AFPA St Jean de Védas")
+                    .snippet("12 Rue Jean Mermoz, 34430 Saint-Jean-de-Védas"));
 
+
+                // When user clicks the map, animate to new camera location
+                mapboxMap.setOnMapClickListener(new MapboxMap.OnMapClickListener() {
+                    @Override
+                    public void onMapClick(@NonNull LatLng point) {
+                        CameraPosition position = new CameraPosition.Builder()
+                                .target(new LatLng(43.564525, 3.845017)) // Sets the new camera position
+                                .zoom(17) // Sets the zoom
+                                .bearing(180) // Rotate the camera
+                                .tilt(30) // Set the camera tilt
+                                .build(); // Creates a CameraPosition from the builder
+
+                        mapboxMap.animateCamera(CameraUpdateFactory.newCameraPosition(position), 7000);
+                    }
+                });
             }
-
-    });
-
-
+        });
     }
 
     @Override
