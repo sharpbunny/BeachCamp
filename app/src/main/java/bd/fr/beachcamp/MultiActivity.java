@@ -38,9 +38,6 @@ public class MultiActivity extends AppCompatActivity {
     public Spinner MySpinner;
     public TextView MyMultiName;
 
-    Ville Palavas = new Ville("Palavas-les-flots", 43.5333, 3.9333);
-    Ville Carnon = new Ville("Carnon-Plage", 43.547, 3.9788);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,9 +45,9 @@ public class MultiActivity extends AppCompatActivity {
         mapView = (MapView)findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
 
-        mapView.getMapAsync(new OnMapReadyCallback(){
+        mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
-            public void onMapReady(final MapboxMap mapboxMap){
+            public void onMapReady(final MapboxMap mapboxMap) {
                 //Marker on Palavas-les-flots
                 mapboxMap.addMarker(new MarkerViewOptions()
                         .position(new LatLng(43.5333, 3.9333))
@@ -73,121 +70,131 @@ public class MultiActivity extends AppCompatActivity {
                 mapboxMap.setOnMapClickListener(new MapboxMap.OnMapClickListener() {
                     @Override
                     public void onMapClick(@NonNull LatLng point) {
-                        CameraPosition position = new CameraPosition.Builder()
-                                .target(new LatLng(Palavas.Longitude)) // Sets the new camera position
+                        CameraPosition position = new CameraPosition.Builder();
+
+                        Ville Palavas = new Ville("Palavas-les-flots", 43.5333, 3.9333);
+                        Ville Carnon = new Ville("Carnon-Plage", 43.547, 3.9788);
+
+                                .target(new LatLng(Palavas.Latitude)) // Sets the new camera position
                                 .zoom(17) // Sets the zoom
                                 .bearing(180) // Rotate the camera
                                 .tilt(30) // Set the camera tilt
                                 .build(); // Creates a CameraPosition from the builder
 
+
+
+
                         mapboxMap.animateCamera(CameraUpdateFactory.newCameraPosition(position), 7000);
 
 
-        MySpinner = (Spinner) findViewById(R.id.MultiSpinner);
-        MySpinner.onCreate(savedInstanceState);
-
-        final String MyTextToShow = String.valueOf(MySpinner.getSelectedItem());
-        final TextView MyMultiName = (TextView) findViewById(R.id.MultiSelected);
-        MyMultiName.setText(MyTextToShow);
-
-        // Example of the elements included in the spinner
-        List<String> categories = new ArrayList<String>();
-        categories.add(Palavas.NomDeVille);
-        categories.add(Carnon.NomDeVille);
-
-        // Creating an adaptator to read the spinner
-
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
-
-        // Drop down list with radio button on it
-
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        MySpinner = (Spinner) findViewById(R.id.MultiSpinner);
 
 
-        // This is how we link the dataAdapter to the spinner
-        MySpinner.setAdapter(dataAdapter);
-        MySpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        final String MyTextToShow = String.valueOf(MySpinner.getSelectedItem());
+                        final TextView MyMultiName = (TextView) findViewById(R.id.MultiSelected);
+                        MyMultiName.setText(MyTextToShow);
 
-                MyMultiName.setText(MyTextToShow);
-            }
+                        // Example of the elements included in the spinner
+                        List<String> categories = new ArrayList<String>();
+                        categories.add(Palavas.NomDeVille);
+                        categories.add(Carnon.NomDeVille);
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+                        // Creating an adaptator to read the spinner
 
-            }
+                        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
 
-            @Override
-            public void onItemSelected(AdapterView joph) {
+                        // Drop down list with radio button on it
 
+                        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
+                        // This is how we link the dataAdapter to the spinner
+                        MySpinner.setAdapter(dataAdapter);
+                        MySpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                                MyMultiName.setText(MyTextToShow);
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+
+
+                            public void onItemSelected(AdapterView joph) {
+
+                            }
+                        });
+                    }
+
+
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        mapView.onStart();
+                    }
+
+                    @Override
+                    public void onResume() {
+                        super.onResume();
+                        mapView.onResume();
+                    }
+
+                    @Override
+                    public void onPause() {
+                        super.onPause();
+                        mapView.onPause();
+                    }
+
+                    @Override
+                    public void onStop() {
+                        super.onStop();
+                        mapView.onStop();
+                    }
+
+                    @Override
+                    public void onLowMemory() {
+                        super.onLowMemory();
+                        mapView.onLowMemory();
+                    }
+
+                    @Override
+                    protected void onDestroy() {
+                        super.onDestroy();
+                        mapView.onDestroy();
+                    }
+
+                    // Déclaration de la classe Ville et de son constructeur. Afin de récupérer les données dans le spinner pour que l'utilisateur fasse son choix.
+                    public class Ville {
+
+                        String NomDeVille;
+                        double Latitude;
+                        double Longitude;
+
+
+                        public Ville() {
+                            NomDeVille = "";
+                            Latitude = 0;
+                            Longitude = 0;
+                        }
+
+                        public Ville(String NomVille, double Latt, double Longt) {
+                            NomDeVille = NomVille;
+                            Latitude = Latt;
+                            Longitude = Longt;
+                        }
+                    }
+                });
             }
         });
-    }
+    }}
 
 
 
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        mapView.onStart();
-    }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        mapView.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        mapView.onPause();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        mapView.onStop();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapView.onLowMemory();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mapView.onDestroy();
-    }
-     // Déclaration de la classe Ville et de son constructeur. Afin de récupérer les données dans le spinner pour que l'utilisateur fasse son choix.
-    public class Ville {
-
-        String NomDeVille;
-        double Latitude;
-        double Longitude;
-
-
-        public Ville() {
-            NomDeVille = "";
-            Latitude = 0;
-            Longitude = 0;
-        }
-        public Ville(String NomVille, double Latt, double Longt){
-                NomDeVille = NomVille;
-                Latitude = Latt;
-                Longitude = Longt;
-            }
-        }
-
-    }
-            }
-        }
-    }
-}
 
 
 
