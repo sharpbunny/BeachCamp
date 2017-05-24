@@ -20,9 +20,11 @@ import com.mapbox.mapboxsdk.annotations.MarkerViewOptions;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.mapbox.mapboxsdk.geometry.LatLngBounds;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
+
 import com.mapbox.mapboxsdk.Mapbox;
 
 
@@ -66,29 +68,28 @@ public class MultiActivity extends AppCompatActivity {
                         .title("Carnon-Plage")
                         .snippet("34470 Carnon-Plage"));
 
+                Ville Palavas = new Ville("Palavas", 43.5333, 39333){
+
+                };
+
+                Ville Carnon = new Ville("Carnon", 43.547, 3.9788){
+
+                };
+
+                Ville Perols = new Ville("Pérols", 43.5667, 3.95);
+
                 // When user clicks the map, animate to new camera location
-                mapboxMap.setOnMapClickListener(new MapboxMap.OnMapClickListener() {
-                    @Override
-                    public void onMapClick(@NonNull LatLng point) {
-                        CameraPosition position = new CameraPosition.Builder();
 
-                        Ville Palavas = new Ville("Palavas-les-flots", 43.5333, 3.9333);
-                        Ville Carnon = new Ville("Carnon-Plage", 43.547, 3.9788);
+                LatLngBounds latLngBounds = new LatLngBounds.Builder()
+                        .include(new LatLng(43.5333, 39333))
+                        .include(new LatLng(43.5667, 3.95))
+                        .include(new LatLng(43.547, 39788))
+                        .build();
 
-                                .target(new LatLng(Palavas.Latitude)) // Sets the new camera position
-                                .zoom(17) // Sets the zoom
-                                .bearing(180) // Rotate the camera
-                                .tilt(30) // Set the camera tilt
-                                .build(); // Creates a CameraPosition from the builder
-
-
-
-
-                        mapboxMap.animateCamera(CameraUpdateFactory.newCameraPosition(position), 7000);
+                mapboxMap.moveCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 50));
 
 
                         MySpinner = (Spinner) findViewById(R.id.MultiSpinner);
-
 
                         final String MyTextToShow = String.valueOf(MySpinner.getSelectedItem());
                         final TextView MyMultiName = (TextView) findViewById(R.id.MultiSelected);
@@ -98,10 +99,11 @@ public class MultiActivity extends AppCompatActivity {
                         List<String> categories = new ArrayList<String>();
                         categories.add(Palavas.NomDeVille);
                         categories.add(Carnon.NomDeVille);
+                        categories.add(Perols.NomDeVille);
 
                         // Creating an adaptator to read the spinner
 
-                        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+                        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(MultiActivity.this, android.R.layout.simple_spinner_item, categories);
 
                         // Drop down list with radio button on it
 
@@ -128,7 +130,8 @@ public class MultiActivity extends AppCompatActivity {
                             }
                         });
                     }
-
+                });
+            }
 
                     @Override
                     public void onStart() {
@@ -166,8 +169,9 @@ public class MultiActivity extends AppCompatActivity {
                         mapView.onDestroy();
                     }
 
+
                     // Déclaration de la classe Ville et de son constructeur. Afin de récupérer les données dans le spinner pour que l'utilisateur fasse son choix.
-                    public class Ville {
+                     class Ville {
 
                         String NomDeVille;
                         double Latitude;
@@ -186,10 +190,7 @@ public class MultiActivity extends AppCompatActivity {
                             Longitude = Longt;
                         }
                     }
-                });
-            }
-        });
-    }}
+    }
 
 
 
