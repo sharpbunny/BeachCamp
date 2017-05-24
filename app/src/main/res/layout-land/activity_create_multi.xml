@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mapbox_blue"
+    tools:context="bd.fr.beachcamp.CreateMulti">
+
+
+    <com.mapbox.mapboxsdk.maps.MapView
+        android:id="@+id/MapViewCreateMulti"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:textColor="#F0D801"
+            android:id="@+id/MultiNameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/MapViewCreateMulti"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Enter the multi name:"/>
+
+        <EditText
+            android:id="@+id/NameChosenForMulti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/MultiNameTxt"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            android:ems="6"
+            android:text=""/>
+
+
+        <TextView
+            android:textColor="#F0D801"
+            android:id="@+id/DateTimeTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/NameChosenForMulti"
+            android:layout_gravity="center_horizontal"
+            android:layout_centerInParent="true"
+            android:text="Enter your datetime:"/>
+
+        <EditText
+            android:id="@+id/DateTimeChosen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/DateTimeTxt"
+            android:layout_gravity="center_horizontal"
+            android:layout_centerInParent="true"
+            android:ems="6"
+            android:text=""/>
+
+        <TextView
+            android:textColor="#F0D801"
+            android:id="@+id/NumbersRegistrationTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/DateTimeChosen"
+            android:layout_gravity="center_horizontal"
+            android:layout_centerInParent="true"
+            android:text="Enter your numbers of registration:"/>
+
+        <EditText
+            android:id="@+id/NumbersRegistrationChosen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_below="@+id/NumbersRegistrationTxt"
+            android:layout_centerInParent="true"
+            android:ems="6"
+            android:text=""/>
+
+        <Button
+            android:textColor="#000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/NumbersRegistrationChosen"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentRight="true"
+            android:text="Validate"/>
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

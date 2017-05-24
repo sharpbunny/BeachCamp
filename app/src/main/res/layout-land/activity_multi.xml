@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/mapbox_blue"
+    tools:context="bd.fr.beachcamp.MultiActivity">
+
+    <com.mapbox.mapboxsdk.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="400dp"
+        android:layout_height="300dp"
+
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Spinner
+            android:id="@+id/MultiSpinner"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="Test"
+            android:layout_centerInParent="true"
+            android:layout_below="@+id/mapView"
+            android:layout_gravity="center_horizontal"
+            />
+
+
+        <TextView
+            android:id="@+id/MultiSelected"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:text="MultiName"
+            android:layout_below="@+id/MultiSpinner"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:id="@+id/MultiDate"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:text="22/05/2017"
+            android:layout_below="@+id/MultiSelected"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <TextView
+            android:id="@+id/NumberRegistration"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="Numbers of registration : "
+            android:layout_below="@+id/MultiDate"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <Button
+            android:id="@+id/CreateMultiButton"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="Create Multi"
+            android:layout_below="@id/NumberRegistration"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center_horizontal"
+            />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
