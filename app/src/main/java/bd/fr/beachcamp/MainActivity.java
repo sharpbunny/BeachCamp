@@ -3,6 +3,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.graphics.Color;
@@ -32,28 +33,6 @@ public class MainActivity extends AppCompatActivity {
         tentative = (TextView) findViewById(R.id.tentative);
         tentative.setVisibility(View.INVISIBLE);
 
-
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (login != null) {
-                    login.setText("");
-                }
-            }
-        });
-
-        password.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                password.setTransformationMethod(new PasswordTransformationMethod());
-
-                if (password != null)
-                {
-                    password.setText("");
-                }
-            }
-        });
-
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,9 +50,6 @@ public class MainActivity extends AppCompatActivity {
                     tentative.setVisibility(View.VISIBLE);                    
                     compteur--;
                     tentative.setText("Nombre essai restant " + Integer.toString(compteur));
-                    login.setText("Pseudo");
-                    password.setTransformationMethod(null);
-                    password.setText("Password");
 
                     if (compteur == 0) {
 

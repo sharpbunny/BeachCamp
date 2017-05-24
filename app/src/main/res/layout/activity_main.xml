@@ -14,15 +14,15 @@
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Pseudo"
-        tools:layout_editor_absoluteY="166dp"
-        tools:layout_editor_absoluteX="85dp"
-
-        android:layout_marginTop="178dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="178dp"
+        android:ems="10"
+
+        android:hint="Pseudo"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="166dp" />
 
     <EditText
         android:id="@+id/password"
@@ -32,8 +32,8 @@
         android:layout_below="@+id/login"
         android:layout_marginTop="26dp"
         android:ems="10"
-        android:inputType="text"
-        android:text="Password"
+        android:hint="Password"
+        android:inputType="textPassword"
         tools:layout_editor_absoluteX="85dp"
         tools:layout_editor_absoluteY="252dp" />
 
