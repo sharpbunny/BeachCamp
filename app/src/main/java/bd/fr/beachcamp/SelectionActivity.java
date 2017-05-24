@@ -34,7 +34,6 @@ public class SelectionActivity extends AppCompatActivity {
                 Intent profil = new Intent(SelectionActivity.this, ProfileActivity.class);
                 profil.putExtra(loginProfil, loginDisplay.getText().toString());
                 startActivity(profil);
-
             }
         });
 
@@ -43,12 +42,10 @@ public class SelectionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent multi = new Intent(SelectionActivity.this, MultiActivity.class);
                 startActivity(multi);
-
             }
         });
 
         Intent intent = getIntent();
-
         loginDisplay = (TextView) findViewById(R.id.nomBox);
 
         if (intent != null){
