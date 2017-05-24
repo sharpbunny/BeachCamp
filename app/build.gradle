@@ -29,8 +29,8 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     testCompile 'junit:junit:4.12'
     // add the Mapbox SDK dependency below
-    compile ('com.mapbox.mapboxsdk:mapbox-android-sdk:5.0.2@aar'){
-        transitive=true
+    compile('com.mapbox.mapboxsdk:mapbox-android-sdk:5.0.2@aar') {
+        transitive = true
     }
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
 }
@@ -38,13 +38,20 @@ dependencies {
 repositories {
     mavenCentral()
 
+
+}
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    // add the Mapbox SDK dependency below
+    compile('com.mapbox.mapboxsdk:mapbox-android-sdk:5.0.2@aar') {
+        transitive = true
+    }
 }
 
+/*dependencies {
 
-
-
-
-
-
-
-
+}*/ dependencies {
+    compile 'com.android.support.constraint:constraint-layout:+'
+}

@@ -20,6 +20,7 @@
         android:layout_height="100dp"
         android:text="Test"
         android:layout_centerInParent="true"
+        android:layout_below="@+id/mapView"
 
         />
 

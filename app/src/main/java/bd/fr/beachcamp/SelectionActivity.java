@@ -12,6 +12,8 @@ public class SelectionActivity extends AppCompatActivity {
 
     ImageButton profilBtn, multiBtn;
     Button decoBtn;
+    // Création du bouton qui permet de faire le lien entre cette activité et celle de la création du multi (oui commentaires en français).
+    Button CreateMultiBtn;
     final String loginProfil = "";
 
     TextView loginDisplay;
@@ -26,6 +28,11 @@ public class SelectionActivity extends AppCompatActivity {
         profilBtn = (ImageButton)findViewById(R.id.profilBtn);
         multiBtn = (ImageButton)findViewById(R.id.multiBtn);
         decoBtn = (Button)findViewById(R.id.decoBtn);
+        CreateMultiBtn = (Button)findViewById(R.id.AddMultiBtn);
+
+        // Je lui indique un listener pour le lier au clic et l'envoyer vers la bonne vue ( CreateMulti activity).
+
+
 
 
         profilBtn.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +52,15 @@ public class SelectionActivity extends AppCompatActivity {
             }
         });
 
+        CreateMultiBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent CreateMulti = new Intent(SelectionActivity.this, CreateMulti.class);
+                startActivity(CreateMulti);
+
+            }
+        });
+
         Intent intent = getIntent();
         loginDisplay = (TextView) findViewById(R.id.nomBox);
 
@@ -60,7 +76,8 @@ public class SelectionActivity extends AppCompatActivity {
 
             }
         });
-
-
+        }
     }
-}
+
+
+
