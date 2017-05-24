@@ -2,7 +2,6 @@ package bd.fr.beachcamp;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,6 +10,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.mapboxsdk.geometry.LatLngBounds;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.annotations.MarkerViewOptions;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
@@ -19,10 +19,6 @@ import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.Mapbox;
-
-
-
-
 import static bd.fr.beachcamp.R.id.mapView;
 
 public class CreateMulti extends AppCompatActivity {
@@ -59,20 +55,44 @@ public class CreateMulti extends AppCompatActivity {
                         .title("Carnon-Plage")
                         .snippet("34470 Carnon-Plage"));
 
+
+                //Marker on Grand Motte
+                mapboxMap.addMarker(new MarkerViewOptions()
+                        .position(new LatLng(43.558124, 4.073781))
+                        .title("Plage du Couchant")
+                        .snippet("34280 La Grand-Motte"));
+
+                //Marker on Grau du Roi
+                mapboxMap.addMarker(new MarkerViewOptions()
+                        .position(new LatLng(43.533297, 4.136957))
+                        .title("Plage du Grau du Roi")
+                        .snippet("30240 Le Grau-du-Roi"));
+
+                //Zoom auto with all markers
+                LatLngBounds latLngBounds = new LatLngBounds.Builder()
+                        .include(new LatLng(43.5333, 3.9333))
+                        .include(new LatLng(43.5667, 3.95))
+                        .include(new LatLng(43.547, 3.9788))
+                        .include(new LatLng(43.558124, 4.073781))
+                        .include(new LatLng(43.533297, 4.136957))
+                        .build();
+
+                mapboxMap.moveCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 50));
+
                 // When user clicks the map, animate to new camera location
-                mapboxMap.setOnMapClickListener(new MapboxMap.OnMapClickListener() {
+                /*mapboxMap.setOnMapClickListener(new MapboxMap.OnMapClickListener() {
                     @Override
                     public void onMapClick(@NonNull LatLng point) {
-                        CameraPosition position = new CameraPosition.Builder()
-                                .target(new LatLng(43.5333, 3.9333)) // Sets the new camera position
-                                .zoom(17) // Sets the zoom
+                        /*CameraPosition position = new CameraPosition.Builder()
+                                .target(new LatLng(43.549, 3.954033333)) // Sets the new camera position
+                                .zoom(12) // Sets the zoom
                                 .bearing(180) // Rotate the camera
                                 .tilt(30) // Set the camera tilt
                                 .build(); // Creates a CameraPosition from the builder
 
                         mapboxMap.animateCamera(CameraUpdateFactory.newCameraPosition(position), 7000);
                     }
-                });
+                });*/
             }
         });
 
