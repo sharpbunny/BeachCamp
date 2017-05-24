@@ -3,7 +3,6 @@ package bd.fr.beachcamp;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,52 +10,47 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
-
-import com.mapbox.mapboxsdk.annotations.Icon;
-import com.mapbox.mapboxsdk.annotations.IconFactory;
+import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.annotations.MarkerViewOptions;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
-import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.Mapbox;
 
 
-import java.util.ArrayList;
-import java.util.List;
 
 
-public class MultiActivity extends AppCompatActivity {
+import static bd.fr.beachcamp.R.id.mapView;
 
-    private MapView mapView;
+public class CreateMulti extends AppCompatActivity {
 
+    private MapView MapViewCreateMulti;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Mapbox.getInstance(this, getString(R.string.AccessToken));
+        setContentView(R.layout.activity_create_multi);
 
-        setContentView(R.layout.activity_multi);
+        MapViewCreateMulti = (MapView)findViewById(R.id.MapViewCreateMulti);
+        MapViewCreateMulti.onCreate(savedInstanceState);
 
-
-        mapView = (MapView) findViewById(R.id.mapView);
-        mapView.onCreate(savedInstanceState);
-
-        mapView.getMapAsync(new OnMapReadyCallback(){
+        MapViewCreateMulti.getMapAsync(new OnMapReadyCallback(){
             @Override
             public void onMapReady(final MapboxMap mapboxMap){
                 //Marker on Palavas-les-flots
                 mapboxMap.addMarker(new MarkerViewOptions()
-                    .position(new LatLng(43.5333, 3.9333))
-                    .title("Palavas-les-flots")
-                    .snippet("34250 Palavas-les-flots"));
+                        .position(new LatLng(43.5333, 3.9333))
+                        .title("Palavas-les-flots")
+                        .snippet("34250 Palavas-les-flots"));
 
                 // Marker on Pérols-plage
                 mapboxMap.addMarker(new MarkerViewOptions()
-                    .position(new LatLng(43.5667, 3.95))
-                    .title("Pérols-plage")
+                        .position(new LatLng(43.5667, 3.95))
+                        .title("Pérols-plage")
                         .snippet("34470 Pérols-plage"));
 
                 // Marker on Carnon-Plage
@@ -70,7 +64,7 @@ public class MultiActivity extends AppCompatActivity {
                     @Override
                     public void onMapClick(@NonNull LatLng point) {
                         CameraPosition position = new CameraPosition.Builder()
-                                .target(new LatLng(43.564525, 3.845017)) // Sets the new camera position
+                                .target(new LatLng(43.5333, 3.9333)) // Sets the new camera position
                                 .zoom(17) // Sets the zoom
                                 .bearing(180) // Rotate the camera
                                 .tilt(30) // Set the camera tilt
@@ -81,92 +75,48 @@ public class MultiActivity extends AppCompatActivity {
                 });
             }
         });
-    }
 
+    }
     @Override
     public void onStart() {
         super.onStart();
-        mapView.onStart();
+        MapViewCreateMulti.onStart();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        mapView.onResume();
+        MapViewCreateMulti.onResume();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        mapView.onPause();
+        MapViewCreateMulti.onPause();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        mapView.onStop();
+        MapViewCreateMulti.onStop();
     }
 
     @Override
     public void onLowMemory() {
         super.onLowMemory();
-        mapView.onLowMemory();
+        MapViewCreateMulti.onLowMemory();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mapView.onDestroy();
+        MapViewCreateMulti.onDestroy();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        mapView.onSaveInstanceState(outState);
+        MapViewCreateMulti.onSaveInstanceState(outState);
     }
-    // Description of the spinner element
-
-   /* Spinner Multispinner = (Spinner) findViewById(R.id.MultiSpinner);
-
-    //Add the click listener on the MultiSpinner
-
-        Multispinner.setOnItemSelectedListener(this);
-
-    // Example of the elements included in the spinner
-
-    List<String> categories = new ArrayList<String>();
-        categories.add("Palavas");
-        categories.add("Le Petit Travers");
-        categories.add("Perols");
-        categories.add("Villeneuve-les-Maguelones");
-
-    // Creating an adaptator to read the spinner
-
-    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
-
-    // Drop down list with radio button on it
-
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-    // This is how we link the dataAdapter to the spinner
-
-        Multispinner.setAdapter(dataAdapter);
-
-
-
-    public void  onItemSelected(AdapterView<?> parent, View view, int position, long id){
-        String elementoftheSpinner = parent.getItemAtPosition(position).toString();
-
-        //How to show the element which is selected
-
-        Toast.makeText(parent.getContext(), "Chose:"+ elementoftheSpinner, Toast.LENGTH_LONG).show();
-    }
-    public void onNothingSelected(AdapterView<?> arg0){
-
-    }
-    */
 }
-
-
-
 
