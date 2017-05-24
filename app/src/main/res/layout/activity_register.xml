@@ -17,26 +17,25 @@
         android:text="Creation profil" />
 
 
-
     <EditText
         android:id="@+id/nomBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Nom"
+        android:layout_alignStart="@+id/prenomBox"
         android:layout_below="@+id/pseudoBox"
-        android:layout_alignStart="@+id/prenomBox" />
+        android:ems="10"
+        android:hint="Nom"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/prenomBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Prenom"
+        android:layout_alignStart="@+id/emailBox"
         android:layout_below="@+id/nomBox"
-        android:layout_alignStart="@+id/emailBox" />
+        android:ems="10"
+        android:hint="Prenom"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/emailBox"
@@ -45,8 +44,8 @@
         android:layout_alignStart="@+id/emailConfBox"
         android:layout_below="@+id/prenomBox"
         android:ems="10"
-        android:inputType="textEmailAddress"
-        android:text="Email" />
+        android:hint="Email"
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/emailConfBox"
@@ -55,8 +54,8 @@
         android:layout_below="@+id/emailBox"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:inputType="textEmailAddress"
-        android:text="Confirmation Email" />
+        android:hint="Confirmation Email"
+        android:inputType="textEmailAddress" />
 
     <TextView
         android:id="@+id/passwordTitle1"
@@ -114,11 +113,11 @@
         android:id="@+id/pseudoBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Pseudo"
-        android:layout_below="@+id/creationProfil"
         android:layout_alignStart="@+id/nomBox"
-        android:layout_marginTop="16dp" />
+        android:layout_below="@+id/creationProfil"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Pseudo"
+        android:inputType="textPersonName" />
 
 </RelativeLayout>
