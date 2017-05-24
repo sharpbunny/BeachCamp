@@ -29,7 +29,7 @@
         android:id="@+id/MultiSelected"
         android:layout_width="100dp"
         android:layout_height="30dp"
-        android:text="MultiName"
+        android:text=""
         android:layout_below="@+id/MultiSpinner"
         android:layout_centerInParent="true"/>
     <TextView
