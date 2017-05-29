@@ -34,15 +34,7 @@
         android:layout_marginBottom="25dp"
         android:text="Deconnexion" />
 
-    <Button
-        android:id="@+id/AddMultiBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/soloBtn"
-        android:layout_alignParentRight="true"
-        android:layout_alignRight="@+id/decoBtn"
-        android:text="Add Multi"
-        />
+
 
     <TextView
         android:id="@+id/menuTitre"

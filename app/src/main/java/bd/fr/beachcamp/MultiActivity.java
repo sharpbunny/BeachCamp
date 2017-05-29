@@ -1,5 +1,6 @@
 package bd.fr.beachcamp;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -30,6 +32,8 @@ public class MultiActivity extends AppCompatActivity {
 
     public MapView mapView;
     public Spinner MySpinner;
+    Button CreateMultiBtn;
+
 
     Ville Palavas = new Ville("Palavas-les-flots", 43.5333, 3.9333);
     Ville Carnon = new Ville("Carnon-Plage", 43.547, 3.9788);
@@ -39,6 +43,17 @@ public class MultiActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Mapbox.getInstance(this, getString(R.string.AccessToken));
         setContentView(R.layout.activity_multi);
+
+        CreateMultiBtn = (Button)findViewById(R.id.AddMultiBtn);
+
+        CreateMultiBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent CreateMulti = new Intent(MultiActivity.this, CreateMulti.class);
+                startActivity(CreateMulti);
+
+            }
+        });
 
         mapView = (MapView) findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);

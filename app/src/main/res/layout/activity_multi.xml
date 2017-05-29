@@ -61,6 +61,14 @@
 
         />
 
+    <Button
+        android:id="@+id/AddMultiBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Multi"
+        android:layout_below="@+id/MultiDate"
+        android:layout_alignStart="@+id/CreateMultiButton" />
+
 
 
 </RelativeLayout>
