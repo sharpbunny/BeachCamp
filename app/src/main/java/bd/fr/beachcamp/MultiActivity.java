@@ -26,16 +26,19 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
-import static bd.fr.beachcamp.R.id.parent;
-
 public class MultiActivity extends AppCompatActivity {
 
     public MapView mapView;
     public Spinner MySpinner;
+<<<<<<< HEAD
 
 
     Ville Palavas = new Ville("Palavas-les-flots", 43.5333, 3.9333);
 
+=======
+  
+    Ville Palavas = new Ville("Palavas-Les-Flots", 43.5333, 3.9333);
+>>>>>>> parent of 80a0c9c...  Fixing the conflicts before the pull from master
     Ville Carnon = new Ville("Carnon-Plage", 43.547, 3.9788);
 
     @Override
@@ -48,6 +51,7 @@ public class MultiActivity extends AppCompatActivity {
         mapView.onCreate(savedInstanceState);
 
         mapView.getMapAsync(new OnMapReadyCallback() {
+<<<<<<< HEAD
                                 @Override
                                 public void onMapReady(final MapboxMap mapboxMap) {
                                     //Marker on Palavas-les-flots
@@ -168,69 +172,126 @@ public class MultiActivity extends AppCompatActivity {
                     public void onNothingSlected(AdapterView<?> parent) {
 
                     }
+=======
+            @Override
+            public void onMapReady(final MapboxMap mapboxMap) {
+                //Marker on Palavas-les-flots
+                mapboxMap.addMarker(new MarkerViewOptions()
+                        .position(new LatLng(43.5333, 3.9333))
+                        .title("Palavas-les-flots")
+                        .snippet("34250 Palavas-les-flots"));
 
-        @Override
-        public void onStart () {
-            super.onStart();
-            mapView.onStart();
-        }
+                // Marker on Pérols-plage
+                mapboxMap.addMarker(new MarkerViewOptions()
+                        .position(new LatLng(43.5667, 3.95))
+                        .title("Pérols-plage")
+                        .snippet("34470 Pérols-plage"));
 
-        @Override
-        public void onResume () {
-            super.onResume();
-            mapView.onResume();
-        }
+                // Marker on Carnon-Plage
+                mapboxMap.addMarker(new MarkerViewOptions()
+                        .position(new LatLng(43.547, 3.9788))
+                        .title("Carnon-Plage")
+                        .snippet("34470 Carnon-Plage"));
 
-        @Override
-        public void onPause () {
-            super.onPause();
-            mapView.onPause();
-        }
+                // When user clicks the map, animate to new camera location
+                mapboxMap.setOnMapClickListener(new MapboxMap.OnMapClickListener() {
+                    @Override
+                    public void onMapClick(@NonNull LatLng point) {
+                        CameraPosition position = new CameraPosition.Builder()
+                                .target(new LatLng(Palavas.Latitude, Palavas.Longitude)) // Sets the new camera position
+                                .zoom(17) // Sets the zoom
+                                .bearing(180) // Rotate the camera
+                                .tilt(30) // Set the camera tilt
+                                .build(); // Creates a CameraPosition from the builder
 
-        @Override
-        public void onStop () {
-            super.onStop();
-            mapView.onStop();
-        }
-
-        @Override
-        public void onLowMemory () {
-            super.onLowMemory();
-            mapView.onLowMemory();
-        }
-
-        @Override
-        protected void onDestroy () {
-            super.onDestroy();
-            mapView.onDestroy();
-        }
-
-
-            // Déclaration de la classe Ville et de son constructeur. Afin de récupérer les données dans le spinner pour que l'utilisateur fasse son choix.
-            public class Ville {
-
-                String NomDeVille;
-                double Latitude;
-                double Longitude;
-
-
-                public Ville() {
-                    NomDeVille = "";
-                    Latitude = 0;
-                    Longitude = 0;
-                }
-
-                public Ville(String NomVille, double Latt, double Longt) {
-                    NomDeVille = NomVille;
-                    Latitude = Latt;
-                    Longitude = Longt;
-                }
+                        mapboxMap.animateCamera(CameraUpdateFactory.newCameraPosition(position), 7000);
+                    
+                });
             }
+        });
 
+        MySpinner = (Spinner) findViewById(R.id.MultiSpinner);
+        //MySpinner.onCreate(savedInstanceState);
+              
+        // Example of the elements included in the spinner
+        List<String> categories = new ArrayList<String>();
+        categories.add(Palavas.NomDeVille);
+        categories.add(Carnon.NomDeVille);
+              
+        // This is how we link the dataAdapter to the spinner
+        MySpinner.setAdapter(dataAdapter);
+
+        MySpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                String item = parent.getItemAtPosition(position).toString();
+                Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+
+            }
+            @Override
+            public void onNothingSlected(AdapterView<?> parent) {
+              
+            }
+        });
+    }
+>>>>>>> parent of 80a0c9c...  Fixing the conflicts before the pull from master
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mapView.onStart();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        mapView.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mapView.onPause();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mapView.onStop();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mapView.onDestroy();
+    }
+     // Déclaration de la classe Ville et de son constructeur. Afin de récupérer les données dans le spinner pour que l'utilisateur fasse son choix.
+    public class Ville {
+
+        String NomDeVille;
+        double Latitude;
+        double Longitude;
 
 
+        public Ville() {
+            NomDeVille = "";
+            Latitude = 0;
+            Longitude = 0;
+        }
+        public Ville(String NomVille, double Latt, double Longt){
+                NomDeVille = NomVille;
+                Latitude = Latt;
+                Longitude = Longt;
+        }
+    }
+}
 
 
 
