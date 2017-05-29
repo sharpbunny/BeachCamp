@@ -18,11 +18,9 @@ import com.mapbox.mapboxsdk.annotations.MarkerViewOptions;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
-import com.mapbox.mapboxsdk.geometry.LatLngBounds;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
-
 import com.mapbox.mapboxsdk.Mapbox;
 import org.w3c.dom.Text;
 import java.util.ArrayList;
@@ -32,8 +30,8 @@ public class MultiActivity extends AppCompatActivity {
 
     public MapView mapView;
     public Spinner MySpinner;
-  
-    Ville Palavas = new Ville("Palavas-Les-Flots", 43.5333, 3.9333);
+
+    Ville Palavas = new Ville("Palavas-les-flots", 43.5333, 3.9333);
     Ville Carnon = new Ville("Carnon-Plage", 43.547, 3.9788);
 
     @Override
@@ -63,6 +61,7 @@ public class MultiActivity extends AppCompatActivity {
                 // Marker on Carnon-Plage
                 mapboxMap.addMarker(new MarkerViewOptions()
                         .position(new LatLng(43.547, 3.9788))
+                        .title("Carnon-Plage")
                         .snippet("34470 Carnon-Plage"));
 
                 // When user clicks the map, animate to new camera location
@@ -77,19 +76,33 @@ public class MultiActivity extends AppCompatActivity {
                                 .build(); // Creates a CameraPosition from the builder
 
                         mapboxMap.animateCamera(CameraUpdateFactory.newCameraPosition(position), 7000);
-                    
+                    }
                 });
             }
         });
 
         MySpinner = (Spinner) findViewById(R.id.MultiSpinner);
         //MySpinner.onCreate(savedInstanceState);
-              
+
+        final String MyTextToShow = String.valueOf(MySpinner.getSelectedItem());
+        final TextView MyMultiName = (TextView) findViewById(R.id.MultiSelected);
+        MyMultiName.setText(MyTextToShow);
+
         // Example of the elements included in the spinner
+
         List<String> categories = new ArrayList<String>();
         categories.add(Palavas.NomDeVille);
         categories.add(Carnon.NomDeVille);
-              
+
+        // Creating an adaptator to read the spinner
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+        // Drop down list with radio button on it
+
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
         // This is how we link the dataAdapter to the spinner
         MySpinner.setAdapter(dataAdapter);
 
@@ -99,11 +112,11 @@ public class MultiActivity extends AppCompatActivity {
 
                 String item = parent.getItemAtPosition(position).toString();
                 Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
-
             }
+
             @Override
-            public void onNothingSlected(AdapterView<?> parent) {
-              
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
     }
@@ -163,7 +176,6 @@ public class MultiActivity extends AppCompatActivity {
         }
     }
 }
-
 
 
 
