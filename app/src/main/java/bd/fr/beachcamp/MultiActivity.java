@@ -31,8 +31,12 @@ public class MultiActivity extends AppCompatActivity {
     public MapView mapView;
     public Spinner MySpinner;
 
+    Double geolist1;
+    Double geolist2;
+
     Ville Palavas = new Ville("Palavas-les-flots", 43.5333, 3.9333);
     Ville Carnon = new Ville("Carnon-Plage", 43.547, 3.9788);
+    Ville Perols = new Ville("Perols-Plage", 43.5667, 3.95);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,11 +69,12 @@ public class MultiActivity extends AppCompatActivity {
                         .snippet("34470 Carnon-Plage"));
 
                 // When user clicks the map, animate to new camera location
+
                 mapboxMap.setOnMapClickListener(new MapboxMap.OnMapClickListener() {
                     @Override
                     public void onMapClick(@NonNull LatLng point) {
                         CameraPosition position = new CameraPosition.Builder()
-                                .target(new LatLng(Palavas.Latitude, Palavas.Longitude)) // Sets the new camera position
+                                .target(new LatLng(geolist1, geolist2)) // Sets the new camera position
                                 .zoom(17) // Sets the zoom
                                 .bearing(180) // Rotate the camera
                                 .tilt(30) // Set the camera tilt
@@ -93,6 +98,18 @@ public class MultiActivity extends AppCompatActivity {
         List<String> categories = new ArrayList<String>();
         categories.add(Palavas.NomDeVille);
         categories.add(Carnon.NomDeVille);
+        categories.add(Perols.NomDeVille);
+
+        final List<Double> geo1 = new ArrayList<Double>();
+        geo1.add(Palavas.Latitude);
+        geo1.add(Carnon.Latitude);
+        geo1.add(Perols.Latitude);
+
+        final List<Double> geo2 = new ArrayList<Double>();
+        geo2.add(Palavas.Longitude);
+        geo2.add(Carnon.Longitude);
+        geo2.add(Perols.Longitude);
+
 
         // Creating an adaptator to read the spinner
 
@@ -112,8 +129,12 @@ public class MultiActivity extends AppCompatActivity {
 
                 String item = parent.getItemAtPosition(position).toString();
                 Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
-            }
+                geolist1 = geo1.get(position);
+                Toast.makeText(parent.getContext(), "Selected: " + geolist1, Toast.LENGTH_LONG).show();
+                geolist2 = geo2.get(position);
+                Toast.makeText(parent.getContext(), "Selected: " + geolist2, Toast.LENGTH_LONG).show();
 
+            }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
