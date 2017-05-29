@@ -30,21 +30,8 @@ public class MultiActivity extends AppCompatActivity {
 
     public MapView mapView;
     public Spinner MySpinner;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
 
     Ville Palavas = new Ville("Palavas-les-flots", 43.5333, 3.9333);
-
-=======
-=======
->>>>>>> parent of 80a0c9c...  Fixing the conflicts before the pull from master
-=======
->>>>>>> parent of 80a0c9c...  Fixing the conflicts before the pull from master
-  
-    Ville Palavas = new Ville("Palavas-Les-Flots", 43.5333, 3.9333);
->>>>>>> parent of 80a0c9c...  Fixing the conflicts before the pull from master
     Ville Carnon = new Ville("Carnon-Plage", 43.547, 3.9788);
 
     @Override
@@ -57,71 +44,6 @@ public class MultiActivity extends AppCompatActivity {
         mapView.onCreate(savedInstanceState);
 
         mapView.getMapAsync(new OnMapReadyCallback() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                @Override
-                                public void onMapReady(final MapboxMap mapboxMap) {
-                                    //Marker on Palavas-les-flots
-                                    mapboxMap.addMarker(new MarkerViewOptions()
-                                            .position(new LatLng(43.5333, 3.9333))
-                                            .title("Palavas-les-flots")
-                                            .snippet("34250 Palavas-les-flots"));
-
-                                    // Marker on Pérols-plage
-                                    mapboxMap.addMarker(new MarkerViewOptions()
-                                            .position(new LatLng(43.5667, 3.95))
-                                            .title("Pérols-plage")
-                                            .snippet("34470 Pérols-plage"));
-
-                                    // Marker on Carnon-Plage
-                                    mapboxMap.addMarker(new MarkerViewOptions()
-                                            .position(new LatLng(43.547, 3.9788))
-                                            .title("Carnon-Plage")
-                                            .snippet("34470 Carnon-Plage"));
-
-                                    // When user clicks the map, animate to new camera location
-                                    mapboxMap.setOnMapClickListener(new MapboxMap.OnMapClickListener() {
-                                        @Override
-                                        public void onMapClick(@NonNull LatLng point) {
-                                            CameraPosition position = new CameraPosition.Builder()
-                                                    .target(new LatLng(Palavas.Latitude, Palavas.Longitude)) // Sets the new camera position
-                                                    .zoom(17) // Sets the zoom
-                                                    .bearing(180) // Rotate the camera
-                                                    .tilt(30) // Set the camera tilt
-                                                    .build(); // Creates a CameraPosition from the builder
-
-                                            mapboxMap.animateCamera(CameraUpdateFactory.newCameraPosition(position), 7000);
-
-                                        }
-
-
-                                    });
-                                }
-                            });
-
-                MySpinner = (Spinner) findViewById(R.id.MultiSpinner);
-                //MySpinner.onCreate(savedInstanceState);
-
-                // Example of the elements included in the spinner
-                List<String> categories = new ArrayList<String>();
-                categories.add(Palavas.NomDeVille);
-                categories.add(Carnon.NomDeVille);
-
-                // This is how we link the dataAdapter to the spinner
-                MySpinner.setAdapter(dataAdapter);
-
-                MySpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-                    @Override
-
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                        String item = parent.getItemAtPosition(position).toString();
-                        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
-
-=======
-=======
->>>>>>> parent of 80a0c9c...  Fixing the conflicts before the pull from master
             @Override
             public void onMapReady(final MapboxMap mapboxMap) {
                 //Marker on Palavas-les-flots
@@ -144,9 +66,7 @@ public class MultiActivity extends AppCompatActivity {
 
                 // When user clicks the map, animate to new camera location
                 mapboxMap.setOnMapClickListener(new MapboxMap.OnMapClickListener() {
-<<<<<<< HEAD
                     @Override
->>>>>>> parent of 80a0c9c...  Fixing the conflicts before the pull from master
                     public void onMapClick(@NonNull LatLng point) {
                         CameraPosition position = new CameraPosition.Builder()
                                 .target(new LatLng(Palavas.Latitude, Palavas.Longitude)) // Sets the new camera position
@@ -156,20 +76,13 @@ public class MultiActivity extends AppCompatActivity {
                                 .build(); // Creates a CameraPosition from the builder
 
                         mapboxMap.animateCamera(CameraUpdateFactory.newCameraPosition(position), 7000);
-<<<<<<< HEAD
                     }
-
-            });
-=======
-                    
                 });
             }
->>>>>>> parent of 80a0c9c...  Fixing the conflicts before the pull from master
         });
 
         MySpinner = (Spinner) findViewById(R.id.MultiSpinner);
         //MySpinner.onCreate(savedInstanceState);
-<<<<<<< HEAD
 
         final String MyTextToShow = String.valueOf(MySpinner.getSelectedItem());
         final TextView MyMultiName = (TextView) findViewById(R.id.MultiSelected);
@@ -206,126 +119,6 @@ public class MultiActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-                    }
-
-                    @Override
-                    public void onNothingSlected(AdapterView<?> parent) {
-
-                    }
-=======
-            @Override
-            public void onMapReady(final MapboxMap mapboxMap) {
-                //Marker on Palavas-les-flots
-                mapboxMap.addMarker(new MarkerViewOptions()
-                        .position(new LatLng(43.5333, 3.9333))
-                        .title("Palavas-les-flots")
-                        .snippet("34250 Palavas-les-flots"));
-
-                // Marker on Pérols-plage
-                mapboxMap.addMarker(new MarkerViewOptions()
-                        .position(new LatLng(43.5667, 3.95))
-                        .title("Pérols-plage")
-                        .snippet("34470 Pérols-plage"));
-
-                // Marker on Carnon-Plage
-                mapboxMap.addMarker(new MarkerViewOptions()
-                        .position(new LatLng(43.547, 3.9788))
-                        .title("Carnon-Plage")
-                        .snippet("34470 Carnon-Plage"));
-
-                // When user clicks the map, animate to new camera location
-                mapboxMap.setOnMapClickListener(new MapboxMap.OnMapClickListener() {
-                    @Override
-=======
-                    @Override
->>>>>>> parent of 80a0c9c...  Fixing the conflicts before the pull from master
-                    public void onMapClick(@NonNull LatLng point) {
-                        CameraPosition position = new CameraPosition.Builder()
-                                .target(new LatLng(Palavas.Latitude, Palavas.Longitude)) // Sets the new camera position
-                                .zoom(17) // Sets the zoom
-                                .bearing(180) // Rotate the camera
-                                .tilt(30) // Set the camera tilt
-                                .build(); // Creates a CameraPosition from the builder
-
-                        mapboxMap.animateCamera(CameraUpdateFactory.newCameraPosition(position), 7000);
-                    
-                });
-            }
-        });
-
-        MySpinner = (Spinner) findViewById(R.id.MultiSpinner);
-        //MySpinner.onCreate(savedInstanceState);
-              
-        // Example of the elements included in the spinner
-        List<String> categories = new ArrayList<String>();
-        categories.add(Palavas.NomDeVille);
-        categories.add(Carnon.NomDeVille);
-              
-        // This is how we link the dataAdapter to the spinner
-        MySpinner.setAdapter(dataAdapter);
-
-        MySpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                String item = parent.getItemAtPosition(position).toString();
-                Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
-
-            }
-            @Override
-            public void onNothingSlected(AdapterView<?> parent) {
-              
-            }
-        });
-    }
-<<<<<<< HEAD
->>>>>>> parent of 80a0c9c...  Fixing the conflicts before the pull from master
-=======
->>>>>>> parent of 80a0c9c...  Fixing the conflicts before the pull from master
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        mapView.onStart();
-    }
-<<<<<<< HEAD
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        mapView.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        mapView.onPause();
-=======
-              
-        // Example of the elements included in the spinner
-        List<String> categories = new ArrayList<String>();
-        categories.add(Palavas.NomDeVille);
-        categories.add(Carnon.NomDeVille);
-              
-        // This is how we link the dataAdapter to the spinner
-        MySpinner.setAdapter(dataAdapter);
-
-        MySpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                String item = parent.getItemAtPosition(position).toString();
-                Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
-
-            }
-            @Override
-            public void onNothingSlected(AdapterView<?> parent) {
-              
-            }
-        });
     }
 
     @Override
@@ -362,79 +155,14 @@ public class MultiActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         mapView.onDestroy();
->>>>>>> parent of 80a0c9c...  Fixing the conflicts before the pull from master
     }
-     // Déclaration de la classe Ville et de son constructeur. Afin de récupérer les données dans le spinner pour que l'utilisateur fasse son choix.
+    // Déclaration de la classe Ville et de son constructeur. Afin de récupérer les données dans le spinner pour que l'utilisateur fasse son choix.
     public class Ville {
-
-<<<<<<< HEAD
-    @Override
-    public void onStop() {
-        super.onStop();
-        mapView.onStop();
-    }
-=======
-        String NomDeVille;
-        double Latitude;
-        double Longitude;
->>>>>>> parent of 80a0c9c...  Fixing the conflicts before the pull from master
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapView.onLowMemory();
-=======
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        mapView.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        mapView.onPause();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        mapView.onStop();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapView.onLowMemory();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mapView.onDestroy();
->>>>>>> parent of 80a0c9c...  Fixing the conflicts before the pull from master
-    }
-     // Déclaration de la classe Ville et de son constructeur. Afin de récupérer les données dans le spinner pour que l'utilisateur fasse son choix.
-    public class Ville {
-
-<<<<<<< HEAD
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mapView.onDestroy();
-    }
-     // Déclaration de la classe Ville et de son constructeur. Afin de récupérer les données dans le spinner pour que l'utilisateur fasse son choix.
-    public class Ville {
-=======
-        String NomDeVille;
-        double Latitude;
-        double Longitude;
->>>>>>> parent of 80a0c9c...  Fixing the conflicts before the pull from master
 
         String NomDeVille;
         double Latitude;
         double Longitude;
+
 
         public Ville() {
             NomDeVille = "";
@@ -442,22 +170,9 @@ public class MultiActivity extends AppCompatActivity {
             Longitude = 0;
         }
         public Ville(String NomVille, double Latt, double Longt){
-                NomDeVille = NomVille;
-                Latitude = Latt;
-                Longitude = Longt;
-        }
-    }
-}
-
-        public Ville() {
-            NomDeVille = "";
-            Latitude = 0;
-            Longitude = 0;
-        }
-        public Ville(String NomVille, double Latt, double Longt){
-                NomDeVille = NomVille;
-                Latitude = Latt;
-                Longitude = Longt;
+            NomDeVille = NomVille;
+            Latitude = Latt;
+            Longitude = Longt;
         }
     }
 }
