@@ -24,14 +24,15 @@
 
         />
 
-
     <TextView
         android:id="@+id/MultiSelected"
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:text=""
         android:layout_below="@+id/MultiSpinner"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true"
+
+        />
     <TextView
         android:id="@+id/MultiDate"
         android:layout_width="100dp"
@@ -48,6 +49,7 @@
         android:text="Numbers of registration : "
         android:layout_below="@+id/MultiDate"
         android:layout_centerInParent="true"
+
         />
     <Button
         android:id="@+id/CreateMultiButton"
@@ -57,7 +59,6 @@
         android:layout_below="@id/NumberRegistration"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-
 
         />
 
