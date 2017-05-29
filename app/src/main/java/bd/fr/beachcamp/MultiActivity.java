@@ -34,7 +34,6 @@ public class MultiActivity extends AppCompatActivity {
     public Spinner MySpinner;
     Button CreateMultiBtn;
 
-
     Double geolist1;
     Double geolist2;
 
@@ -47,6 +46,7 @@ public class MultiActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Mapbox.getInstance(this, getString(R.string.AccessToken));
         setContentView(R.layout.activity_multi);
+
 
         CreateMultiBtn = (Button)findViewById(R.id.AddMultiBtn);
 
@@ -104,10 +104,6 @@ public class MultiActivity extends AppCompatActivity {
         MySpinner = (Spinner) findViewById(R.id.MultiSpinner);
         //MySpinner.onCreate(savedInstanceState);
 
-        final String MyTextToShow = String.valueOf(MySpinner.getSelectedItem());
-        final TextView MyMultiName = (TextView) findViewById(R.id.MultiSelected);
-        MyMultiName.setText(MyTextToShow);
-
         // Example of the elements included in the spinner
 
         List<String> categories = new ArrayList<String>();
@@ -124,7 +120,6 @@ public class MultiActivity extends AppCompatActivity {
         geo2.add(Palavas.Longitude);
         geo2.add(Carnon.Longitude);
         geo2.add(Perols.Longitude);
-
 
         // Creating an adaptator to read the spinner
 
