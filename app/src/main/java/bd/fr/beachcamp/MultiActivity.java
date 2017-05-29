@@ -32,11 +32,14 @@ public class MultiActivity extends AppCompatActivity {
     public Spinner MySpinner;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
     Ville Palavas = new Ville("Palavas-les-flots", 43.5333, 3.9333);
 
 =======
+=======
+>>>>>>> parent of 80a0c9c...  Fixing the conflicts before the pull from master
 =======
 >>>>>>> parent of 80a0c9c...  Fixing the conflicts before the pull from master
   
@@ -54,6 +57,7 @@ public class MultiActivity extends AppCompatActivity {
         mapView.onCreate(savedInstanceState);
 
         mapView.getMapAsync(new OnMapReadyCallback() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
                                 @Override
@@ -116,6 +120,8 @@ public class MultiActivity extends AppCompatActivity {
                         Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
 
 =======
+=======
+>>>>>>> parent of 80a0c9c...  Fixing the conflicts before the pull from master
             @Override
             public void onMapReady(final MapboxMap mapboxMap) {
                 //Marker on Palavas-les-flots
@@ -138,6 +144,7 @@ public class MultiActivity extends AppCompatActivity {
 
                 // When user clicks the map, animate to new camera location
                 mapboxMap.setOnMapClickListener(new MapboxMap.OnMapClickListener() {
+<<<<<<< HEAD
                     @Override
 >>>>>>> parent of 80a0c9c...  Fixing the conflicts before the pull from master
                     public void onMapClick(@NonNull LatLng point) {
@@ -232,6 +239,9 @@ public class MultiActivity extends AppCompatActivity {
                 // When user clicks the map, animate to new camera location
                 mapboxMap.setOnMapClickListener(new MapboxMap.OnMapClickListener() {
                     @Override
+=======
+                    @Override
+>>>>>>> parent of 80a0c9c...  Fixing the conflicts before the pull from master
                     public void onMapClick(@NonNull LatLng point) {
                         CameraPosition position = new CameraPosition.Builder()
                                 .target(new LatLng(Palavas.Latitude, Palavas.Longitude)) // Sets the new camera position
@@ -271,6 +281,9 @@ public class MultiActivity extends AppCompatActivity {
             }
         });
     }
+<<<<<<< HEAD
+>>>>>>> parent of 80a0c9c...  Fixing the conflicts before the pull from master
+=======
 >>>>>>> parent of 80a0c9c...  Fixing the conflicts before the pull from master
 
     @Override
@@ -278,6 +291,7 @@ public class MultiActivity extends AppCompatActivity {
         super.onStart();
         mapView.onStart();
     }
+<<<<<<< HEAD
 
     @Override
     public void onResume() {
@@ -369,8 +383,42 @@ public class MultiActivity extends AppCompatActivity {
     public void onLowMemory() {
         super.onLowMemory();
         mapView.onLowMemory();
+=======
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mapView.onResume();
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        mapView.onPause();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mapView.onStop();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mapView.onDestroy();
+>>>>>>> parent of 80a0c9c...  Fixing the conflicts before the pull from master
+    }
+     // Déclaration de la classe Ville et de son constructeur. Afin de récupérer les données dans le spinner pour que l'utilisateur fasse son choix.
+    public class Ville {
+
+<<<<<<< HEAD
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -378,6 +426,11 @@ public class MultiActivity extends AppCompatActivity {
     }
      // Déclaration de la classe Ville et de son constructeur. Afin de récupérer les données dans le spinner pour que l'utilisateur fasse son choix.
     public class Ville {
+=======
+        String NomDeVille;
+        double Latitude;
+        double Longitude;
+>>>>>>> parent of 80a0c9c...  Fixing the conflicts before the pull from master
 
         String NomDeVille;
         double Latitude;
