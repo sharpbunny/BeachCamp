@@ -2,9 +2,8 @@ package bd.fr.beachcamp;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-
-
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,7 +12,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
-
 import com.mapbox.mapboxsdk.annotations.Icon;
 import com.mapbox.mapboxsdk.annotations.IconFactory;
 import com.mapbox.mapboxsdk.annotations.MarkerViewOptions;
@@ -24,19 +22,14 @@ import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.Mapbox;
-
-
 import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class MultiActivity extends AppCompatActivity {
 
     public MapView mapView;
     public Spinner MySpinner;
-    public TextView MyMultiName;
 
     Ville Palavas = new Ville("Palavas-les-flots", 43.5333, 3.9333);
     Ville Carnon = new Ville("Carnon-Plage", 43.547, 3.9788);
@@ -44,13 +37,15 @@ public class MultiActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Mapbox.getInstance(this, getString(R.string.AccessToken));
+        setContentView(R.layout.activity_multi);
 
-        mapView = (MapView)findViewById(R.id.mapView);
+        mapView = (MapView) findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
 
-        mapView.getMapAsync(new OnMapReadyCallback(){
+        mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
-            public void onMapReady(final MapboxMap mapboxMap){
+            public void onMapReady(final MapboxMap mapboxMap) {
                 //Marker on Palavas-les-flots
                 mapboxMap.addMarker(new MarkerViewOptions()
                         .position(new LatLng(43.5333, 3.9333))
@@ -74,23 +69,27 @@ public class MultiActivity extends AppCompatActivity {
                     @Override
                     public void onMapClick(@NonNull LatLng point) {
                         CameraPosition position = new CameraPosition.Builder()
-                                .target(new LatLng(Palavas.Longitude)) // Sets the new camera position
+                                .target(new LatLng(Palavas.Latitude, Palavas.Longitude)) // Sets the new camera position
                                 .zoom(17) // Sets the zoom
                                 .bearing(180) // Rotate the camera
                                 .tilt(30) // Set the camera tilt
                                 .build(); // Creates a CameraPosition from the builder
 
                         mapboxMap.animateCamera(CameraUpdateFactory.newCameraPosition(position), 7000);
-
+                    }
+                });
+            }
+        });
 
         MySpinner = (Spinner) findViewById(R.id.MultiSpinner);
-        MySpinner.onCreate(savedInstanceState);
+        //MySpinner.onCreate(savedInstanceState);
 
         final String MyTextToShow = String.valueOf(MySpinner.getSelectedItem());
         final TextView MyMultiName = (TextView) findViewById(R.id.MultiSelected);
         MyMultiName.setText(MyTextToShow);
 
         // Example of the elements included in the spinner
+
         List<String> categories = new ArrayList<String>();
         categories.add(Palavas.NomDeVille);
         categories.add(Carnon.NomDeVille);
@@ -106,27 +105,21 @@ public class MultiActivity extends AppCompatActivity {
 
         // This is how we link the dataAdapter to the spinner
         MySpinner.setAdapter(dataAdapter);
+
         MySpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                MyMultiName.setText(MyTextToShow);
+                String item = parent.getItemAtPosition(position).toString();
+                Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-
-            @Override
-            public void onItemSelected(AdapterView joph) {
-
-            }
         });
     }
-
-
-
 
     @Override
     public void onStart() {
@@ -180,14 +173,10 @@ public class MultiActivity extends AppCompatActivity {
                 NomDeVille = NomVille;
                 Latitude = Latt;
                 Longitude = Longt;
-            }
-        }
-
-    }
-            }
         }
     }
 }
+
 
 
 
