@@ -61,7 +61,6 @@ public class MultiActivity extends AppCompatActivity {
                 // Marker on Carnon-Plage
                 mapboxMap.addMarker(new MarkerViewOptions()
                         .position(new LatLng(43.547, 3.9788))
-                        .title("Carnon-Plage")
                         .snippet("34470 Carnon-Plage"));
 
                 // When user clicks the map, animate to new camera location
