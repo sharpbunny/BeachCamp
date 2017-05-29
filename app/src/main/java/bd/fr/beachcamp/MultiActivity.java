@@ -18,11 +18,9 @@ import com.mapbox.mapboxsdk.annotations.MarkerViewOptions;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
-import com.mapbox.mapboxsdk.geometry.LatLngBounds;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
-
 import com.mapbox.mapboxsdk.Mapbox;
 import org.w3c.dom.Text;
 import java.util.ArrayList;
@@ -35,7 +33,9 @@ public class MultiActivity extends AppCompatActivity {
     public MapView mapView;
     public Spinner MySpinner;
 
-    Ville Palavas = new Ville("Palavas-Les-Flots", 43.5333, 3.9333);
+
+    Ville Palavas = new Ville("Palavas-les-flots", 43.5333, 3.9333);
+
     Ville Carnon = new Ville("Carnon-Plage", 43.547, 3.9788);
 
     @Override
@@ -101,10 +101,66 @@ public class MultiActivity extends AppCompatActivity {
 
                 MySpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
                     @Override
+
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                         String item = parent.getItemAtPosition(position).toString();
                         Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+
+                    public void onMapClick(@NonNull LatLng point) {
+                        CameraPosition position = new CameraPosition.Builder()
+                                .target(new LatLng(Palavas.Latitude, Palavas.Longitude)) // Sets the new camera position
+                                .zoom(17) // Sets the zoom
+                                .bearing(180) // Rotate the camera
+                                .tilt(30) // Set the camera tilt
+                                .build(); // Creates a CameraPosition from the builder
+
+                        mapboxMap.animateCamera(CameraUpdateFactory.newCameraPosition(position), 7000);
+                    }
+
+            });
+        });
+
+        MySpinner = (Spinner) findViewById(R.id.MultiSpinner);
+        //MySpinner.onCreate(savedInstanceState);
+
+        final String MyTextToShow = String.valueOf(MySpinner.getSelectedItem());
+        final TextView MyMultiName = (TextView) findViewById(R.id.MultiSelected);
+        MyMultiName.setText(MyTextToShow);
+
+        // Example of the elements included in the spinner
+
+        List<String> categories = new ArrayList<String>();
+        categories.add(Palavas.NomDeVille);
+        categories.add(Carnon.NomDeVille);
+
+        // Creating an adaptator to read the spinner
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+        // Drop down list with radio button on it
+
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
+        // This is how we link the dataAdapter to the spinner
+        MySpinner.setAdapter(dataAdapter);
+
+        MySpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                String item = parent.getItemAtPosition(position).toString();
+                Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
 
                     }
 
@@ -112,9 +168,6 @@ public class MultiActivity extends AppCompatActivity {
                     public void onNothingSlected(AdapterView<?> parent) {
 
                     }
-                });
-            }
-
 
         @Override
         public void onStart () {
@@ -175,7 +228,6 @@ public class MultiActivity extends AppCompatActivity {
             }
 
     }
-
 
 
 
