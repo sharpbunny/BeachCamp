@@ -135,7 +135,7 @@ public class CreateMulti extends AppCompatActivity {
                     adb.setIcon(android.R.drawable.ic_dialog_alert);
 
                     //On affecte un bouton "OK" à notre AlertDialog et on lui affecte un évènement
-                    adb.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    adb.setPositiveButton("Valider", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
 
                             //Lorsque l'on cliquera sur le bouton "OK", on récupère l'EditText correspondant à notre vue personnalisée (cad à alertDialogView)
