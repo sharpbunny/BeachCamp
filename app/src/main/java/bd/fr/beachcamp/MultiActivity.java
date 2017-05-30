@@ -138,11 +138,11 @@ public class MultiActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 String item = parent.getItemAtPosition(position).toString();
-                Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+                //Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
                 geolist1 = geo1.get(position);
-                Toast.makeText(parent.getContext(), "Selected: " + geolist1, Toast.LENGTH_LONG).show();
+                //Toast.makeText(parent.getContext(), "Selected: " + geolist1, Toast.LENGTH_LONG).show();
                 geolist2 = geo2.get(position);
-                Toast.makeText(parent.getContext(), "Selected: " + geolist2, Toast.LENGTH_LONG).show();
+                //Toast.makeText(parent.getContext(), "Selected: " + geolist2, Toast.LENGTH_LONG).show();
 
             }
             @Override
