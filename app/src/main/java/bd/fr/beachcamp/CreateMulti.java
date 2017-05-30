@@ -47,6 +47,7 @@ public class CreateMulti extends AppCompatActivity {
     double lng;
     String TAG_TITLE =  "";
     String TAG_DESCRIPTION = "";
+    int TAG_PERSONNES = 0;
 
 
     @Override
@@ -128,7 +129,7 @@ public class CreateMulti extends AppCompatActivity {
                     adb.setView(alertDialogView);
 
                     //On donne un titre à l'AlertDialog
-                    adb.setTitle("Titre de notre boite de dialogue");
+                    adb.setTitle("Création de l'activité en groupe");
 
                     //On modifie l'icône de l'AlertDialog pour le fun ;)
                     adb.setIcon(android.R.drawable.ic_dialog_alert);
@@ -140,14 +141,17 @@ public class CreateMulti extends AppCompatActivity {
                             //Lorsque l'on cliquera sur le bouton "OK", on récupère l'EditText correspondant à notre vue personnalisée (cad à alertDialogView)
                             EditText titre = (EditText)alertDialogView.findViewById(R.id.EditText1);
                             EditText description = (EditText)alertDialogView.findViewById(R.id.EditText2);
+                            EditText nbPersonnes = (EditText)alertDialogView.findViewById(R.id.EditText3);
 
-                            //On affiche dans le marqueur les textes contenus dans l'EditText de notre AlertDialog
+                            //On affiche dans le marqueur les textes contenus dans les EditText de notre AlertDialog
 
                             TAG_TITLE = titre.getText().toString();
                             TAG_DESCRIPTION = description.getText().toString();
+                            TAG_PERSONNES = Integer.parseInt(nbPersonnes.getText().toString());
 
                             marker.setTitle(TAG_TITLE);
                             marker.setSnippet(TAG_DESCRIPTION);
+                            Toast.makeText(getApplicationContext(), "Nb : " + TAG_PERSONNES, Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -160,7 +164,6 @@ public class CreateMulti extends AppCompatActivity {
                             mapboxMap.removeMarker(marker);
                         }
                     });
-
                     adb.show();
                 }
             });
