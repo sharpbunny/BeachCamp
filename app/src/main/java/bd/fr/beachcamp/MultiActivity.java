@@ -209,10 +209,9 @@ public class MultiActivity extends AppCompatActivity {
                 //Toast.makeText(parent.getContext(), "Selected: " + geolist2, Toast.LENGTH_LONG).show();
                 TextView dateCreation = (TextView)findViewById(R.id.MultiDate);
                 TextView nbPersonnes = (TextView)findViewById(R.id.NumberRegistration);
-                if(titre != null){
-                    dateCreation.setText(dateList.get(position).toString());
-                    nbPersonnes.setText(String.valueOf(personnesList.get(position).intValue()));
-                }
+                dateCreation.setText(dateList.get(position).toString());
+                nbPersonnes.setText(String.valueOf(personnesList.get(position).intValue()));
+
             }
 
             @Override
@@ -226,7 +225,7 @@ public class MultiActivity extends AppCompatActivity {
         mapboxMap.addMarker(new MarkerViewOptions()
                 .position(new LatLng(ville.Latitude, ville.Longitude))
                 .title(ville.NomDeVille)
-                .snippet(ville.NomDeVille));
+                .snippet(snippet));
     }
 
     @Override
