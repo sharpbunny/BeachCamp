@@ -28,6 +28,8 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.R.attr.defaultValue;
+
 public class MultiActivity extends AppCompatActivity {
 
     public MapView mapView;
@@ -37,15 +39,36 @@ public class MultiActivity extends AppCompatActivity {
     Double geolist1;
     Double geolist2;
 
+    String titre;
+    String snippet;
+    double lat;
+    double lng;
+
     Ville Palavas = new Ville("Palavas-les-flots", 43.5333, 3.9333);
     Ville Carnon = new Ville("Carnon-Plage", 43.547, 3.9788);
     Ville Perols = new Ville("Perols-Plage", 43.5667, 3.95);
+    Ville ville;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Mapbox.getInstance(this, getString(R.string.AccessToken));
         setContentView(R.layout.activity_multi);
+
+        Intent intentMulti = getIntent();
+        titre = intentMulti.getStringExtra("TAG_TITLE");
+        snippet = intentMulti.getStringExtra("TAG_SNIPPET");
+        lat = intentMulti.getDoubleExtra("TAG_LAT", defaultValue);
+        lng = intentMulti.getDoubleExtra("TAG_LNG", defaultValue);
+
+
+        ville = new Ville(titre,lat,lng);
+
+
+
+        /*Toast.makeText(getApplicationContext(), "Titre " + titre, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "lat " + lat, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "lng " + lng, Toast.LENGTH_SHORT).show();*/
 
 
         CreateMultiBtn = (Button)findViewById(R.id.AddMultiBtn);
@@ -55,7 +78,6 @@ public class MultiActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent CreateMulti = new Intent(MultiActivity.this, CreateMulti.class);
                 startActivity(CreateMulti);
-
             }
         });
 
@@ -83,6 +105,9 @@ public class MultiActivity extends AppCompatActivity {
                         .title("Carnon-Plage")
                         .snippet("34470 Carnon-Plage"));
 
+                if (titre != null){
+                    CreateMarker(mapboxMap);
+                }
                 // When user clicks the map, animate to new camera location
 
                 mapboxMap.setOnMapClickListener(new MapboxMap.OnMapClickListener() {
@@ -110,16 +135,22 @@ public class MultiActivity extends AppCompatActivity {
         categories.add(Palavas.NomDeVille);
         categories.add(Carnon.NomDeVille);
         categories.add(Perols.NomDeVille);
+        if (titre !=null)
+            categories.add(ville.NomDeVille);
 
         final List<Double> geo1 = new ArrayList<Double>();
         geo1.add(Palavas.Latitude);
         geo1.add(Carnon.Latitude);
         geo1.add(Perols.Latitude);
+        if (titre !=null)
+            geo1.add(ville.Latitude);
 
         final List<Double> geo2 = new ArrayList<Double>();
         geo2.add(Palavas.Longitude);
         geo2.add(Carnon.Longitude);
         geo2.add(Perols.Longitude);
+        if (titre !=null)
+            geo2.add(ville.Longitude);
 
         // Creating an adaptator to read the spinner
 
@@ -150,6 +181,13 @@ public class MultiActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void CreateMarker (MapboxMap mapboxMap){
+        mapboxMap.addMarker(new MarkerViewOptions()
+                .position(new LatLng(ville.Latitude, ville.Longitude))
+                .title(ville.NomDeVille)
+                .snippet(ville.NomDeVille));
     }
 
     @Override
