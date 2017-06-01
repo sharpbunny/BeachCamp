@@ -153,15 +153,18 @@ public class CreateMulti extends AppCompatActivity {
 
                         marker.setTitle(titreMulti);
                         marker.setSnippet(descriptionMulti);
-                        Toast.makeText(getApplicationContext(), "Nb : " + personnesMulti, Toast.LENGTH_SHORT).show();
+                        /*Toast.makeText(getApplicationContext(), "Nb : " + personnesMulti, Toast.LENGTH_SHORT).show();
                         Toast.makeText(getApplicationContext(), "Date : " + stringOfDate, Toast.LENGTH_LONG).show();
-                        Toast.makeText(getApplicationContext(), "Heure : " + stringOfTime, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Heure : " + stringOfTime, Toast.LENGTH_LONG).show();*/
 
                         Intent intent = new Intent(getApplicationContext(), MultiActivity.class);
                         intent.putExtra("TAG_TITLE", titreMulti);
                         intent.putExtra("TAG_SNIPPET", descriptionMulti);
                         intent.putExtra("TAG_LAT", lat);
                         intent.putExtra("TAG_LNG", lng);
+                        intent.putExtra("TAG_PERSONNES", personnesMulti);
+                        intent.putExtra("TAG_HOUR", stringOfTime);
+                        intent.putExtra("TAG_DATE", stringOfDate);
                         startActivity(intent);
                     }
                 });

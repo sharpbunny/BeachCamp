@@ -20,6 +20,7 @@ import com.mapbox.mapboxsdk.annotations.MarkerViewOptions;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.mapbox.mapboxsdk.geometry.LatLngBounds;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
@@ -43,11 +44,16 @@ public class MultiActivity extends AppCompatActivity {
     String snippet;
     double lat;
     double lng;
+    int personnes = 0;
+    String heure;
+    String date;
 
     Ville Palavas = new Ville("Palavas-les-flots", 43.5333, 3.9333);
     Ville Carnon = new Ville("Carnon-Plage", 43.547, 3.9788);
     Ville Perols = new Ville("Perols-Plage", 43.5667, 3.95);
     Ville ville;
+
+    LatLngBounds latLngBounds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,16 +66,15 @@ public class MultiActivity extends AppCompatActivity {
         snippet = intentMulti.getStringExtra("TAG_SNIPPET");
         lat = intentMulti.getDoubleExtra("TAG_LAT", defaultValue);
         lng = intentMulti.getDoubleExtra("TAG_LNG", defaultValue);
-
+        personnes = intentMulti.getIntExtra("TAG_PERSONNES", defaultValue);
+        heure = intentMulti.getStringExtra("TAG_HEURE");
+        date = intentMulti.getStringExtra("TAG_DATE");
 
         ville = new Ville(titre,lat,lng);
-
-
 
         /*Toast.makeText(getApplicationContext(), "Titre " + titre, Toast.LENGTH_SHORT).show();
         Toast.makeText(getApplicationContext(), "lat " + lat, Toast.LENGTH_SHORT).show();
         Toast.makeText(getApplicationContext(), "lng " + lng, Toast.LENGTH_SHORT).show();*/
-
 
         CreateMultiBtn = (Button)findViewById(R.id.AddMultiBtn);
 
@@ -108,8 +113,26 @@ public class MultiActivity extends AppCompatActivity {
                 if (titre != null){
                     CreateMarker(mapboxMap);
                 }
-                // When user clicks the map, animate to new camera location
+                //Zoom auto with all markers
+                if (titre == null) {
+                    latLngBounds = new LatLngBounds.Builder()
+                            .include(new LatLng(43.5333, 3.9333))
+                            .include(new LatLng(43.5667, 3.95))
+                            .include(new LatLng(43.547, 3.9788))
+                            .build();
+                }
+                else{
+                    latLngBounds = new LatLngBounds.Builder()
+                            .include(new LatLng(43.5333, 3.9333))
+                            .include(new LatLng(43.5667, 3.95))
+                            .include(new LatLng(43.547, 3.9788))
+                            .include(new LatLng(ville.Latitude, ville.Longitude))
+                            .build();
+                }
 
+                mapboxMap.moveCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 50));
+
+                // When user clicks the map, animate to new camera location
                 mapboxMap.setOnMapClickListener(new MapboxMap.OnMapClickListener() {
                     @Override
                     public void onMapClick(@NonNull LatLng point) {
@@ -130,7 +153,6 @@ public class MultiActivity extends AppCompatActivity {
         //MySpinner.onCreate(savedInstanceState);
 
         // Example of the elements included in the spinner
-
         List<String> categories = new ArrayList<String>();
         categories.add(Palavas.NomDeVille);
         categories.add(Carnon.NomDeVille);
@@ -152,14 +174,25 @@ public class MultiActivity extends AppCompatActivity {
         if (titre !=null)
             geo2.add(ville.Longitude);
 
-        // Creating an adaptator to read the spinner
+        final List<String> dateList = new ArrayList<String>();
+        dateList.add("06/07/2017");
+        dateList.add("09/07/2017");
+        dateList.add("11/07/2017");
+        if (titre !=null)
+            dateList.add(date);
 
+        final List<Integer> personnesList = new ArrayList<Integer>();
+        personnesList.add(10);
+        personnesList.add(17);
+        personnesList.add(20);
+        if (titre !=null)
+            personnesList.add(personnes);
+
+        // Creating an adaptator to read the spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
 
         // Drop down list with radio button on it
-
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
 
         // This is how we link the dataAdapter to the spinner
         MySpinner.setAdapter(dataAdapter);
@@ -174,8 +207,14 @@ public class MultiActivity extends AppCompatActivity {
                 //Toast.makeText(parent.getContext(), "Selected: " + geolist1, Toast.LENGTH_LONG).show();
                 geolist2 = geo2.get(position);
                 //Toast.makeText(parent.getContext(), "Selected: " + geolist2, Toast.LENGTH_LONG).show();
-
+                TextView dateCreation = (TextView)findViewById(R.id.MultiDate);
+                TextView nbPersonnes = (TextView)findViewById(R.id.NumberRegistration);
+                if(titre != null){
+                    dateCreation.setText(dateList.get(position).toString());
+                    nbPersonnes.setText(String.valueOf(personnesList.get(position).intValue()));
+                }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
