@@ -8,9 +8,20 @@
 
     <com.mapbox.mapboxsdk.maps.MapView
         android:id="@+id/mapView"
-        android:layout_width="400dp"
-        android:layout_height="300dp"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+
+        <Button
+            android:id="@+id/AddMultiBtn"
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:background="@color/colorAccent"
+            android:text="+"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+    </com.mapbox.mapboxsdk.maps.MapView>
 
     <Spinner
         android:id="@+id/MultiSpinner"
@@ -78,15 +89,6 @@
         android:textAlignment="center"
         android:layout_below="@+id/descriptionMulti"
         android:layout_alignParentEnd="true" />
-
-    <Button
-        android:id="@+id/AddMultiBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="8dp"
-        android:text="Add Multi" />
 
 
 </RelativeLayout>
