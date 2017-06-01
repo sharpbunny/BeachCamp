@@ -10,8 +10,6 @@
         android:id="@+id/mapView"
         android:layout_width="400dp"
         android:layout_height="300dp"
-
-
         />
 
     <Spinner
@@ -41,15 +39,6 @@
         android:elevation="1dp"
         android:textAlignment="center" />
 
-    <Button
-        android:id="@+id/AddMultiBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Multi"
-        android:layout_marginEnd="12dp"
-        android:layout_below="@+id/NumberRegistration"
-        android:layout_alignParentEnd="true" />
-
     <TextView
 
         android:id="@+id/textViewDateCreation"
@@ -68,8 +57,36 @@
         android:text="Nombre de participants :"
         android:layout_below="@+id/MultiDate"
         android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/AddMultiBtn"
+
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/descriptionMulti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Description : "
+        android:layout_below="@+id/NumberRegistration"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="9dp"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/descriptionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_below="@+id/descriptionMulti"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/AddMultiBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="8dp"
+        android:text="Add Multi" />
 
 
 </RelativeLayout>

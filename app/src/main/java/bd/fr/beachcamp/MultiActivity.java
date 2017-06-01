@@ -188,6 +188,13 @@ public class MultiActivity extends AppCompatActivity {
         if (titre !=null)
             personnesList.add(personnes);
 
+        final List<String> descriptionList = new ArrayList<String>();
+        descriptionList.add("Description de l'activité 1");
+        descriptionList.add("Description de l'activité 2");
+        descriptionList.add("Description de l'activité 3");
+        if (titre !=null)
+            descriptionList.add(snippet);
+
         // Creating an adaptator to read the spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
 
@@ -209,9 +216,10 @@ public class MultiActivity extends AppCompatActivity {
                 //Toast.makeText(parent.getContext(), "Selected: " + geolist2, Toast.LENGTH_LONG).show();
                 TextView dateCreation = (TextView)findViewById(R.id.MultiDate);
                 TextView nbPersonnes = (TextView)findViewById(R.id.NumberRegistration);
+                TextView description = (TextView)findViewById(R.id.descriptionText);
                 dateCreation.setText(dateList.get(position).toString());
                 nbPersonnes.setText(String.valueOf(personnesList.get(position).intValue()));
-
+                description.setText(descriptionList.get(position).toString());
             }
 
             @Override
